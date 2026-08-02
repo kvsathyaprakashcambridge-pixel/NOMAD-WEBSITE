@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import signature from '../assets/sathya-prakash-signature.png'
 
 export default function Story() {
   useEffect(() => {
@@ -118,6 +119,23 @@ export default function Story() {
           <p className="lede light-copy">
             NOMAD <span className="x1-normal">X1</span> conceptually uses recycled polyester, replaceable modular components and durable construction intended to support longer product life.
           </p>
+        </div>
+      </section>
+
+      {/* ─── Signature ─── */}
+      <section className="section signature-section">
+        <div className="container" style={{ textAlign: 'center' }}>
+          <p className="signature-concept" style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#888', marginBottom: '8px', fontFamily: 'Manrope, Arial, sans-serif' }}>
+            CONCEPT, PRODUCT DIRECTION AND DIGITAL EXPERIENCE
+          </p>
+          <p className="signature-name" style={{ fontSize: '1.2rem', fontWeight: 800, fontFamily: 'Syne, sans-serif', color: '#111312', marginBottom: '16px' }}>
+            SATHIYA PRAKASH
+          </p>
+          <img 
+            src={signature} 
+            alt="Sathya Prakash signature" 
+            style={{ width: 'min(180px, 40vw)', height: 'auto', margin: '0 auto', display: 'block', opacity: 0.85 }} 
+          />
         </div>
       </section>
 

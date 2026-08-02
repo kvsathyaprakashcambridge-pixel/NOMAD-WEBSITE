@@ -192,11 +192,6 @@ export default function Home() {
               src={heroFull}
               alt="Black NOMAD X1 modular backpack shown from the front"
             />
-            <img
-              className="hero-signature"
-              src={signature}
-              alt="Sathya Prakash signature"
-            />
           </div>
         </div>
       </section>
@@ -217,12 +212,6 @@ export default function Home() {
                 className="feature-product-bag"
                 src={orbitBag}
                 alt="NOMAD X1 modular backpack shown from the front"
-              />
-              <img
-                className="feature-product-signature"
-                src={signature}
-                alt=""
-                aria-hidden="true"
               />
             </figure>
 
