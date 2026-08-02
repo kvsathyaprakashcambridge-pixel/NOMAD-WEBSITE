@@ -567,6 +567,7 @@ button:focus-visible {
   font-size: 1.2rem;
 }
 .back-top.show { opacity: 1; pointer-events: auto; }
+.back-top.over-dark { color: #f7f4ec; border: 1px solid rgba(255,255,255,0.12); }
 
 /* ─── Footer ─── */
 .footer { background: #090b0a; color: #d6dad2; padding: 75px 0 32px; }

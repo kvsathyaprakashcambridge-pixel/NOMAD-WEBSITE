@@ -134,7 +134,7 @@ export default function Story() {
           <img 
             src={signature} 
             alt="Sathya Prakash signature" 
-            style={{ width: 'min(180px, 40vw)', height: 'auto', margin: '0 auto', display: 'block', opacity: 0.85 }} 
+            style={{ width: 'min(280px, 60vw)', height: 'auto', margin: '0 auto', display: 'block', opacity: 0.85, filter: 'brightness(0)' }} 
           />
         </div>
       </section>

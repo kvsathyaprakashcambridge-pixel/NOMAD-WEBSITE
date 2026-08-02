@@ -1,11 +1,15 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { motion, useReducedMotion, AnimatePresence } from 'framer-motion'
 import heroFull from '../assets/nomad-x1-hero-full.png'
 import signature from '../assets/sathya-prakash-signature.png'
 import orbitBag from '../assets/nomad-x1-orbit.png'
+import ConfigurationSystem from '../components/ConfigurationSystem'
 import frontView from '../assets/nomad-x1-front-view.webp'
 import backView from '../assets/nomad-x1-back-view.webp'
 import interiorView from '../assets/nomad-x1-interior-view.webp'
+
+const MotionLink = motion.create ? motion.create(Link) : motion(Link);
 
 /* ─── Feature pins data ─── */
 const PINS = [
@@ -128,13 +132,6 @@ const PINS = [
   },
 ]
 
-/* ─── Benefit pin SVG ─── */
-const BenefitPinSVG = () => (
-  <svg className="benefit-pin" viewBox="0 0 24 24" aria-hidden="true">
-    <path d="M16 3a1 1 0 0 1 .117 1.993L16 5v4.764l1.894 3.789a1 1 0 0 1 .1.331L18 14v2a1 1 0 0 1-.883.993L17 17h-4v4a1 1 0 0 1-1.993.117L11 21v-4H7a1 1 0 0 1-.993-.883L6 16v-2a1 1 0 0 1 .06-.34l.046-.107L8 9.762V5a1 1 0 0 1-.117-1.993L8 3h8Z"/>
-  </svg>
-)
-
 /* ─── Product Focus gallery images ─── */
 const GALLERY_IMAGES = [
   { src: frontView, alt: 'NOMAD X1 backpack shown from the front', label: 'Front view' },
@@ -143,9 +140,73 @@ const GALLERY_IMAGES = [
 ]
 
 export default function Home() {
-  const sectionRef = useRef(null)
   const [activeImg, setActiveImg] = useState(0)
   const [changing, setChanging] = useState(false)
+  const [selectedFeatureIndex, setSelectedFeatureIndex] = useState(0)
+  const [hoveredFeatureIndex, setHoveredFeatureIndex] = useState(null)
+  
+  const displayedFeatureIndex = hoveredFeatureIndex ?? selectedFeatureIndex
+  const hasHover = typeof window !== 'undefined' ? window.matchMedia("(hover: hover) and (pointer: fine)").matches : false
+  
+  const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
+  
+  const shouldReduceMotion = useReducedMotion();
+  const tScale = isMobile ? 0.7 : 1;
+
+  const wordVariants = shouldReduceMotion ? {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.15 } }
+  } : {
+    hidden: { opacity: 0, x: "-50%", y: "calc(-50% + 20px)", filter: 'blur(6px)' },
+    visible: { opacity: 1, x: "-50%", y: "-50%", filter: 'blur(0px)', transition: { delay: 0.1 * tScale, duration: 0.7 * tScale, ease: [0.22, 1, 0.36, 1] } }
+  };
+
+  const labelVariants = shouldReduceMotion ? {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.15 } }
+  } : {
+    hidden: { opacity: 0, y: 12 },
+    visible: { opacity: 1, y: 0, transition: { delay: 0.18 * tScale, duration: 0.5 * tScale, ease: [0.22, 1, 0.36, 1] } }
+  };
+
+  const headingVariants = shouldReduceMotion ? {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.15 } }
+  } : {
+    hidden: { opacity: 0, y: isMobile ? 18 : 28 },
+    visible: { opacity: 1, y: 0, transition: { delay: 0.26 * tScale, duration: 0.65 * tScale, ease: [0.22, 1, 0.36, 1] } }
+  };
+
+  const pVariants = shouldReduceMotion ? {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.15 } }
+  } : {
+    hidden: { opacity: 0, y: 18 },
+    visible: { opacity: 1, y: 0, transition: { delay: 0.38 * tScale, duration: 0.55 * tScale, ease: [0.22, 1, 0.36, 1] } }
+  };
+
+  const btnVariants = shouldReduceMotion ? {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.15 } }
+  } : {
+    hidden: { opacity: 0, y: 14, scale: 0.97 },
+    visible: { opacity: 1, y: 0, scale: 1, transition: { delay: 0.48 * tScale, duration: 0.5 * tScale, ease: [0.22, 1, 0.36, 1] } }
+  };
+
+  const btnHover = shouldReduceMotion ? {} : {
+    y: -2, scale: 1.02, transition: { duration: 0.18 }
+  };
+  const btnTap = shouldReduceMotion ? {} : {
+    scale: 0.97, transition: { duration: 0.1 }
+  };
+
+  const bagVariants = shouldReduceMotion ? {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.15 } }
+  } : {
+    hidden: { opacity: 0, x: "-50%", y: isMobile ? 20 : 36, scale: 0.94, filter: 'drop-shadow(0px 22px 27px rgba(0,0,0,0.16)) blur(5px)' },
+    visible: { opacity: 1, x: "-50%", y: 0, scale: 1, filter: 'drop-shadow(0px 22px 27px rgba(0,0,0,0.16)) blur(0px)', transition: { delay: 0.32 * tScale, duration: 0.9 * tScale, ease: [0.16, 1, 0.3, 1] } }
+  };
 
   /* Reveal observer */
   useEffect(() => {
@@ -175,26 +236,37 @@ export default function Home() {
         <div className="container editorial-hero-inner">
           <div className="editorial-copy">
             <div className="editorial-intro">
-              <p className="eyebrow">NOMAD <span className="x1-normal">X1</span> / 01</p>
-              <h1>Built for wherever<br />life takes you.</h1>
-              <Link className="editorial-shop" to="/product" aria-label="Explore NOMAD X1">
+              <motion.p className="eyebrow" initial="hidden" animate="visible" variants={labelVariants}>NOMAD <span className="x1-normal">X1</span> / 01</motion.p>
+              <motion.h1 initial="hidden" animate="visible" variants={headingVariants}>Built for wherever<br />life takes you.</motion.h1>
+              <MotionLink 
+                className="editorial-shop" 
+                to="/product" 
+                aria-label="Explore NOMAD X1"
+                initial="hidden" animate="visible" variants={btnVariants}
+                whileHover={btnHover}
+                whileTap={btnTap}
+                style={{ transition: 'background 0.25s, color 0.25s' }}
+              >
                 <span className="x1-normal">X1</span>
-              </Link>
+              </MotionLink>
             </div>
-            <p className="editorial-description">
+            <motion.p className="editorial-description" initial="hidden" animate="visible" variants={pVariants}>
               A modular smart backpack that organises technology, daily essentials and short journeys without compromising comfort or style.
-            </p>
+            </motion.p>
           </div>
-          <div className="hero-word" aria-hidden="true">NOMAD</div>
+          <motion.div className="hero-word" aria-hidden="true" initial="hidden" animate="visible" variants={wordVariants}>NOMAD</motion.div>
           <div className="hero-product">
-            <img
+            <motion.img
               className="hero-bag-image"
               src={heroFull}
               alt="Black NOMAD X1 modular backpack shown from the front"
+              initial="hidden" animate="visible" variants={bagVariants}
             />
           </div>
         </div>
       </section>
+
+
 
       {/* ─── FEATURE SHOWCASE ─── */}
       <section className="section feature-showcase" aria-labelledby="feature-showcase-title">
@@ -205,77 +277,81 @@ export default function Home() {
             <p className="lede">Every feature is positioned around one adaptable carry system for study, work and short journeys.</p>
           </header>
 
-          <div className="feature-orbit">
-            <figure className="feature-product">
-              <span className="feature-product-halo" aria-hidden="true" />
-              <img
-                className="feature-product-bag"
-                src={orbitBag}
-                alt="NOMAD X1 modular backpack shown from the front"
-              />
-            </figure>
-
-            <div className="feature-ring" aria-label="Rotating NOMAD X1 feature highlights">
-              {PINS.map(pin => (
-                <article key={pin.cls} className={`feature-pin ${pin.cls}`}>
-                  {pin.svg}
-                  <h3>{pin.title}</h3>
-                  <p>{pin.desc}</p>
-                </article>
-              ))}
+          <div className="feature-orbit-layout">
+            <div className="feature-info-panel-left">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={displayedFeatureIndex}
+                  initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 7 }}
+                  animate={{ opacity: 1, y: 0, transition: { duration: 0.24, ease: [0.22, 1, 0.36, 1] } }}
+                  exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -5, transition: { duration: 0.13 } }}
+                >
+                  <p className="feature-panel-label eyebrow">ACTIVE FEATURE</p>
+                  <p className="feature-panel-num">
+                    {(displayedFeatureIndex + 1).toString().padStart(2, '0')} / {PINS.length}
+                  </p>
+                  <h3 className="feature-panel-title">{PINS[displayedFeatureIndex].title}</h3>
+                </motion.div>
+              </AnimatePresence>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* ─── BENEFIT ROADMAP ─── */}
-      <section className="section benefit-roadmap" aria-labelledby="benefit-roadmap-title">
-        <div className="container">
-          <header className="benefit-roadmap-head">
-            <div className="benefit-roadmap-title">
-              <p className="eyebrow">Key benefits</p>
-              <h2 id="benefit-roadmap-title">More capability.<br />Less disorder.</h2>
-            </div>
-            <aside className="benefit-roadmap-context" aria-label="NOMAD X1 benefit overview">
-              <p className="benefit-roadmap-index">NOMAD <span className="x1-normal">X1</span> / SYSTEM 01—04</p>
-              <p className="benefit-roadmap-summary">Four focused systems protect what matters, adapt to changing loads and keep every journey organised.</p>
-              <div className="benefit-roadmap-metrics">
-                <span><strong>24–32 L</strong><small>Adaptive capacity</small></span>
-                <span><strong>4</strong><small>Core systems</small></span>
-              </div>
-            </aside>
-          </header>
+            <div className="feature-orbit-center">
+              <div className="feature-orbit">
+                <figure className="feature-product">
+                  <span className="feature-product-halo" aria-hidden="true" />
+                  <img
+                    className="feature-product-bag"
+                    src={orbitBag}
+                    alt="NOMAD X1 modular backpack shown from the front"
+                  />
+                </figure>
 
-          <div className="benefit-path" role="list" aria-label="Four key benefits of the NOMAD X1">
-            <svg className="benefit-path-line" viewBox="0 0 1000 1040" preserveAspectRatio="none" aria-hidden="true">
-              <path className="benefit-path-desktop" d="M280 140 C500 140 535 305 720 345 C865 380 500 460 280 625 C170 710 510 820 720 900"/>
-              <path className="benefit-path-mobile" d="M380 130 C610 145 660 280 620 380 C575 490 395 500 380 640 C365 765 540 825 620 900"/>
-            </svg>
-
-            {[
-              { num: '01', title: 'Expandable Storage', desc: 'Shift from 24 litres of daily storage to 32 litres when your journey requires more.', color: 'orange' },
-              { num: '02', title: 'Protected Technology', desc: 'An elevated padded compartment protects laptops and tablets from movement and impact.', color: 'blue' },
-              { num: '03', title: 'Concealed Security', desc: 'Hidden rear storage keeps important documents, wallets and valuables closer to you.', color: 'purple' },
-              { num: '04', title: 'Weather Resistance', desc: 'Coated fabric and protected zippers reduce exposure to light rain and accidental spills.', color: 'orange' },
-            ].map((note, i) => (
-              <article
-                key={note.num}
-                className={`benefit-note benefit-note-${i + 1} benefit-note-${note.color}`}
-                role="listitem"
-              >
-                <div className="benefit-note-shell reveal">
-                  <BenefitPinSVG />
-                  <div className="benefit-note-panel">
-                    <span className="benefit-note-number">{note.num}</span>
-                    <h3>{note.title}</h3>
-                    <p>{note.desc}</p>
-                  </div>
+                <div className="feature-ring" aria-label="Rotating NOMAD X1 feature highlights">
+                  {PINS.map((pin, index) => {
+                    const isActive = index === selectedFeatureIndex;
+                    const isPreviewed = index === hoveredFeatureIndex;
+                    const isDisplayed = isActive || isPreviewed;
+                    
+                    return (
+                      <article key={pin.cls} className={`feature-pin ${pin.cls} ${isDisplayed ? 'is-active' : ''}`}>
+                        <button 
+                          type="button" 
+                          className="feature-pin-control"
+                          aria-pressed={isActive}
+                          onPointerEnter={() => hasHover && setHoveredFeatureIndex(index)}
+                          onPointerLeave={() => hasHover && setHoveredFeatureIndex(null)}
+                          onClick={() => setSelectedFeatureIndex(index)}
+                        >
+                          {pin.svg}
+                          <h3>{pin.title}</h3>
+                          <p>{pin.desc}</p>
+                        </button>
+                      </article>
+                    );
+                  })}
                 </div>
-              </article>
-            ))}
+              </div>
+            </div>
+
+            <div className="feature-info-panel-right">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={displayedFeatureIndex}
+                  initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 7 }}
+                  animate={{ opacity: 1, y: 0, transition: { duration: 0.24, ease: [0.22, 1, 0.36, 1] } }}
+                  exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -5, transition: { duration: 0.13 } }}
+                >
+                  <p className="feature-panel-label eyebrow">SYSTEM DETAIL</p>
+                  <p className="feature-panel-detail">{PINS[displayedFeatureIndex].desc}</p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
           </div>
         </div>
       </section>
+
+      {/* ─── CONFIGURATION SYSTEM ─── */}
+      <ConfigurationSystem />
 
       {/* ─── PRODUCT FOCUS ─── */}
       <section className="section product-focus" aria-labelledby="product-focus-title">
