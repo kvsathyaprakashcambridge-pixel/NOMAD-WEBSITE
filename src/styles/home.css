@@ -933,12 +933,13 @@
     grid-column: 1 / -1;
     order: -1;
     width: 100%;
-    height: 520px;
+    height: auto;
+    padding: 20px 0;
     transform: none;
     background: #efede7;
   }
-  .feature-product-bag { width: min(620px, 92vw); max-height: 510px; clip-path: inset(0 0 17.2% 0); }
-  .feature-product-signature { left: 61.5%; top: 30%; width: min(118px, 22vw); }
+  .feature-product-bag { width: min(620px, 92vw); max-height: 510px; clip-path: inset(0 0 17.2% 0); margin: 0 auto; }
+  .feature-product-signature { left: 63%; top: 38%; width: min(118px, 22vw); }
   .feature-ring {
     position: static;
     display: contents;
@@ -980,9 +981,9 @@
   .benefit-path-mobile { display: block; }
   .benefit-note { width: 300px; }
   .benefit-note-1 { top: 0; left: 4%; }
-  .benefit-note-2 { top: 250px; right: 2%; }
-  .benefit-note-3 { top: 570px; left: 4%; }
-  .benefit-note-4 { top: 870px; right: 2%; }
+  .benefit-note-2 { top: 280px; right: 2%; }
+  .benefit-note-3 { top: 560px; left: 4%; }
+  .benefit-note-4 { top: 840px; right: 2%; }
   .product-focus-card { grid-template-columns: 1fr; }
   .product-focus-image-shell { min-height: 380px; }
   .best-sellers-head { flex-direction: column; align-items: flex-start; gap: 16px; }

@@ -35,6 +35,8 @@ export const BagViewsCarousel = ({
   const [hoverPrev, setHoverPrev] = useState(false);
   const [hoverNext, setHoverNext] = useState(false);
   const [containerWidth, setContainerWidth] = useState(1200);
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
 
   const imageContainerRef = useRef(null);
   const autoplayIntervalRef = useRef(null);
@@ -133,8 +135,24 @@ export const BagViewsCarousel = ({
     exit: { opacity: 0, y: -20 },
   };
 
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e) => setTouchEnd(e.targetTouches[0].clientX);
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    if (distance > minSwipeDistance) handleNext();
+    if (distance < -minSwipeDistance) handlePrev();
+  };
+
   return (
-    <div className="testimonial-container">
+    <div className="testimonial-container" onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
       <div className={`testimonial-grid ${reverse ? "reverse-layout" : ""}`}>
         <div className="image-container" ref={imageContainerRef}>
           {views.map((view, index) => (
@@ -213,6 +231,7 @@ export const BagViewsCarousel = ({
           max-width: 1200px;
           padding: 2rem;
           margin: 0 auto;
+          overflow: hidden;
         }
         .testimonial-grid {
           display: grid;
