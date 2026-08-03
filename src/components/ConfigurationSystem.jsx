@@ -1,8 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useMotionValueEvent, useReducedMotion, AnimatePresence } from 'framer-motion';
-import dailyModeImage from '../assets/daily-mode replace.png';
-import creatorModeImage from '../assets/mode-creator.png';
-import escapeModeImage from '../assets/mode-escape.png';
+import dailyModeImage from '../assets/daily-mode replace.webp';
+import creatorModeImage from '../assets/mode-creator.webp';
+import escapeModeImage from '../assets/mode-escape.webp';
 
 const MODES = [
   {

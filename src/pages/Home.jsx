@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useReducedMotion, AnimatePresence } from 'framer-motion'
-import heroFull from '../assets/nomad-x1-hero-full.png'
+import heroFull from '../assets/REPLACE-HERO.webp'
 import signature from '../assets/sathya-prakash-signature.png'
-import orbitBag from '../assets/nomad-x1-orbit.png'
+import orbitBag from '../assets/nomad-x1-orbit.webp'
 import ConfigurationSystem from '../components/ConfigurationSystem'
+import ProductPrice from '../components/ProductPrice'
 import frontView from '../assets/nomad-x1-front-view.webp'
 import backView from '../assets/nomad-x1-back-view.webp'
 import interiorView from '../assets/nomad-x1-interior-view.webp'
@@ -202,10 +203,10 @@ export default function Home() {
 
   const bagVariants = shouldReduceMotion ? {
     hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.15 } }
+    visible: { opacity: 1, filter: 'blur(0px)', transition: { duration: 0.15 } }
   } : {
-    hidden: { opacity: 0, x: "-50%", y: isMobile ? 20 : 36, scale: 0.94, filter: 'drop-shadow(0px 22px 27px rgba(0,0,0,0.16)) blur(5px)' },
-    visible: { opacity: 1, x: "-50%", y: 0, scale: 1, filter: 'drop-shadow(0px 22px 27px rgba(0,0,0,0.16)) blur(0px)', transition: { delay: 0.32 * tScale, duration: 0.9 * tScale, ease: [0.16, 1, 0.3, 1] } }
+    hidden: { opacity: 0, x: `calc(-50% + 15px)`, y: isMobile ? 33 : 49, scale: 1.109, filter: 'blur(5px)' },
+    visible: { opacity: 1, x: `calc(-50% + 15px)`, y: 13, scale: 1.180, filter: 'blur(0px)', transition: { delay: 0.32 * tScale, duration: 0.9 * tScale, ease: [0.16, 1, 0.3, 1] } }
   };
 
   /* Reveal observer */
@@ -433,7 +434,7 @@ export default function Home() {
             <article className="product-focus-panel">
               <p className="product-focus-kicker">Modular smart backpack</p>
               <h2 id="product-focus-title">One system.<br />Configured around you.</h2>
-              <p className="product-focus-price">₹4,999</p>
+              <p className="product-focus-price"><ProductPrice priceString="₹4,999" /></p>
               <div className="product-focus-description">
                 <span>Description</span>
                 <p>NOMAD <span className="x1-normal">X1</span> adapts from daily carry to short-journey mode, with protected technology storage and modular organisation throughout.</p>

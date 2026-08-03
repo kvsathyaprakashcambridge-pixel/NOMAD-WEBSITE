@@ -741,3 +741,26 @@ body > main > .section:not(.section-dark):not(.section-soft):not(.cta),
 }
 
 ::selection { background: #2559d8; color: #fff; }
+
+/* ─── CONSISTENT PRICE TYPOGRAPHY ─── */
+.product-price {
+  display: inline-flex;
+  align-items: baseline;
+  white-space: nowrap;
+  line-height: 1;
+  gap: 0.08em;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-family: 'Manrope', 'Inter', 'Arial', 'Noto Sans', sans-serif;
+}
+
+.product-price-currency,
+.product-price-value {
+  display: inline-block;
+  font-family: 'Manrope', 'Inter', 'Arial', 'Noto Sans', sans-serif;
+  font-style: normal;
+  line-height: 1;
+}
+
+.product-price-currency {
+  font-size: 0.9em;
+}

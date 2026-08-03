@@ -62,7 +62,7 @@
   line-height: 1.65;
   color: #686963;
   max-width: 380px;
-  margin-top: 34px;
+  margin-top: 25px;
 }
 .editorial-shop {
   width: 50px;
@@ -110,7 +110,10 @@
   width: min(1000px, 62vw);
   height: auto;
   display: block;
-  filter: drop-shadow(0 22px 27px rgba(0,0,0,.16));
+  object-fit: contain;
+  image-rendering: auto;
+  filter: none;
+  opacity: 1;
   pointer-events: none;
   user-select: none;
 }
@@ -153,7 +156,7 @@
 .feature-showcase-head {
   position: relative;
   z-index: 3;
-  max-width: 720px;
+  max-width: 1200px;
   margin: 0 auto;
   margin-bottom: clamp(44px, 5vh, 64px);
   text-align: center;
@@ -162,12 +165,12 @@
 .feature-showcase-head .eyebrow::before { display: none; }
 .feature-showcase-head h2 {
   margin-bottom: 16px;
-  font-size: clamp(2.45rem, 4.5vw, 4.9rem);
+  font-size: clamp(2.4rem, 4.2vw, 4.4rem);
 }
 .feature-showcase-head .lede {
   margin: 0 auto;
-  max-width: 600px;
-  font-size: 1rem;
+  max-width: 700px;
+  font-size: 1.15rem;
 }
 
 /* ─── 3-Column Layout ─── */
@@ -760,16 +763,9 @@
   transition: transform .4s var(--ease);
   position: relative;
   z-index: 1;
-}
-.best-seller-card:hover .best-seller-visual img { transform: translateY(-8px) scale(1.03); }
-
-/* Scale up X1 Lineup bags to visually match the Best Sellers (due to extra transparent padding in source PNGs) */
-.x1-lineup-card .best-seller-visual img {
   transform: scale(1.41);
 }
-.x1-lineup-card:hover .best-seller-visual img {
-  transform: translateY(-8px) scale(1.44);
-}
+.best-seller-card:hover .best-seller-visual img { transform: translateY(-8px) scale(1.44); }
 .best-seller-index {
   position: absolute;
   top: 18px;
@@ -1035,8 +1031,9 @@
 }
 .config-left-content {
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
   padding-left: clamp(48px, 5vw, 80px);
+  margin-top: -60px;
 }
 @media (min-width: 1024px) and (max-width: 1199px) {
   .config-left-content {
@@ -1063,7 +1060,7 @@
 }
 .config-left-col h2 {
   margin: 12px 0 24px;
-  max-width: 400px;
+  max-width: 600px;
   color: #F3F0E8;
 }
 @media (max-height: 720px) {
@@ -1602,5 +1599,258 @@
 
   .back-top {
     display: none !important;
+  }
+}
+
+/* ================================================== */
+/* HORIZONTAL SCROLL GALLERY (DESKTOP)                */
+/* ================================================== */
+:root {
+  --desktop-header-height: 84px; /* Estimated navbar height */
+}
+
+/* ─── Base Layout (Desktop) ─── */
+.x1-lineup.is-desktop {
+  overflow: visible;
+}
+.x1-sticky-viewport {
+  position: sticky;
+  top: var(--desktop-header-height);
+  height: calc(100svh - var(--desktop-header-height));
+  overflow: hidden;
+  background: var(--bg-primary); /* ensure no background bleed */
+}
+.x1-scroll-layout {
+  display: grid;
+  grid-template-columns: minmax(300px, 30%) minmax(0, 70%);
+  column-gap: clamp(36px, 4vw, 64px);
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding-inline: clamp(48px, 5vw, 72px);
+  padding-block: clamp(20px, 3vh, 40px);
+  box-sizing: border-box;
+  transform: translateY(clamp(-20px, -1.5vh, -8px));
+}
+
+/* ─── Editorial Column (Desktop) ─── */
+.x1-scroll-editorial {
+  position: relative;
+  z-index: 2;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.x1-scroll-editorial .best-sellers-head {
+  display: block; /* Override default flex */
+  text-align: left;
+  margin: 0 0 40px 0;
+  max-width: 100%; /* Changed from 400px to allow clamp */
+}
+.x1-scroll-title {
+  width: 100%;
+  max-width: 100%;
+  margin: 28px 0 18px;
+  padding-inline-end: 12px;
+  box-sizing: border-box;
+  font-size: clamp(42px, 4vw, 58px);
+  line-height: 0.94;
+  letter-spacing: -0.045em;
+}
+.x1-scroll-title > span {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+}
+.x1-scroll-progress-ui {
+  margin-top: clamp(30px, 6vh, 60px);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.x1-scroll-counter {
+  font-family: var(--font-display, "Syne");
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--orange);
+}
+.x1-scroll-counter span {
+  font-size: 2rem;
+  color: var(--text-primary);
+}
+.x1-scroll-active-name {
+  font-family: var(--font-display, "Syne");
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.x1-scroll-progress-track {
+  width: 100%;
+  max-width: 240px;
+  height: 2px;
+  background: rgba(0,0,0,0.1);
+  margin-top: 8px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.x1-scroll-progress-fill {
+  height: 100%;
+  background: var(--orange);
+  width: 100%;
+}
+
+/* ─── Gallery Column (Desktop) ─── */
+.x1-gallery-viewport {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  width: 100%;
+  overflow: hidden; /* Desktop relies on motion transform */
+  isolation: isolate;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.x1-horizontal-track {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: clamp(20px, 2.5vw, 40px);
+  padding-inline: clamp(20px, 4vw, 80px); /* Intentional resting positions */
+  align-items: center;
+  will-change: transform;
+}
+.x1-horizontal-track .x1-lineup-card {
+  flex: 0 0 clamp(300px, 30vw, 400px);
+  margin: 0;
+  opacity: 0.65;
+  transition: opacity 0.4s ease;
+  will-change: opacity;
+}
+.x1-horizontal-track .x1-lineup-card.is-active {
+  opacity: 1;
+}
+
+/* Match image visual scale of upper cards (lower bag source images have more padding) */
+.x1-horizontal-track .x1-lineup-card .best-seller-visual img {
+  transform: scale(1.65);
+}
+.x1-horizontal-track .x1-lineup-card:hover .best-seller-visual img {
+  transform: translateY(-8px) scale(1.7);
+}
+
+.x1-plain-prefix {
+  font-family: Arial, Helvetica, sans-serif !important;
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: inherit;
+}
+
+/* ================================================== */
+/* NATIVE SCROLL FALLBACK (TABLET & MOBILE)           */
+/* ================================================== */
+@media (max-width: 1099px) {
+  .x1-scroll-title {
+    font-size: clamp(42px, 7vw, 60px);
+  }
+  .x1-sticky-viewport {
+    position: static;
+    height: auto;
+    overflow: visible;
+  }
+  .x1-scroll-layout {
+    flex-direction: column;
+    display: block;
+  }
+  .x1-scroll-editorial {
+    padding: 0;
+    max-width: 100%;
+  }
+  .x1-scroll-editorial .best-sellers-head {
+    max-width: 100%;
+    margin-bottom: 32px;
+  }
+  .x1-gallery-viewport {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+    /* Hide scrollbar */
+    scrollbar-width: none;
+    padding-bottom: 24px;
+    margin-inline: calc(var(--container-padding) * -1); /* Break out of container to edge */
+    width: 100vw;
+  }
+  .x1-gallery-viewport::-webkit-scrollbar { display: none; }
+  
+  .x1-horizontal-track {
+    display: flex;
+    width: max-content;
+    transform: none !important; /* Force override any stale motion values */
+    gap: 24px;
+    padding-inline: clamp(20px, 5vw, 40px);
+  }
+  
+  .x1-horizontal-track .x1-lineup-card {
+    scroll-snap-align: center;
+    flex: 0 0 clamp(320px, 50vw, 400px);
+  }
+  
+  /* Container context fix */
+  .x1-sticky-viewport {
+    padding-inline: clamp(20px, 5vw, 40px);
+  }
+  .x1-gallery-viewport {
+    margin-inline: calc(clamp(20px, 5vw, 40px) * -1);
+  }
+}
+
+@media (max-width: 767px) {
+  .x1-scroll-title {
+    font-size: clamp(38px, 11vw, 52px);
+    line-height: 0.94;
+  }
+  .x1-horizontal-track {
+    gap: 16px;
+    padding-inline: 20px;
+  }
+  .x1-horizontal-track .x1-lineup-card {
+    flex-basis: min(84vw, 360px);
+  }
+  .x1-sticky-viewport {
+    padding-inline: 20px;
+  }
+  .x1-gallery-viewport {
+    margin-inline: -20px;
+  }
+}
+
+/* ================================================== */
+/* REDUCED MOTION FALLBACK                            */
+/* ================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .x1-lineup.is-desktop { height: auto !important; }
+  .x1-sticky-viewport { position: static; height: auto; overflow: visible; }
+  .x1-scroll-layout { display: block; }
+  .x1-scroll-editorial { max-width: 100%; padding: 0; margin-bottom: 40px; }
+  .x1-scroll-progress-ui { display: none; /* Progress UI unnecessary on grid */ }
+  .x1-gallery-viewport { overflow: visible; }
+  .x1-horizontal-track {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+    padding: 0;
+    width: 100%;
+    transform: none !important;
+  }
+  .x1-horizontal-track .x1-lineup-card {
+    opacity: 1 !important;
+    transform: none !important;
   }
 }

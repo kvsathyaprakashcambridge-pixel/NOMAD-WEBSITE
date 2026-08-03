@@ -2,17 +2,17 @@ import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { BagViewsCarousel } from '../components/BagViewsCarousel'
 
-import arcFront from '../assets/FONT VIEW.png';
-import arcInterior from '../assets/INTERIER VIEW.png';
-import arcBack from '../assets/BACK VIEW.png';
+import arcFront from '../assets/FONT VIEW.webp';
+import arcInterior from '../assets/INTERIER VIEW.webp';
+import arcBack from '../assets/BACK VIEW.webp';
 
-import vectorFront from '../assets/VECTOR FRONT.png';
-import vectorInterior from '../assets/VECTOR INTEROR.png';
-import vectorBack from '../assets/VECTOR BACK.png';
+import vectorFront from '../assets/VECTOR FRONT.webp';
+import vectorInterior from '../assets/VECTOR INTEROR.webp';
+import vectorBack from '../assets/VECTOR BACK.webp';
 
-import ridgeFront from '../assets/RIDGE FRONT.png';
-import ridgeInterior from '../assets/RIDGE INTEROR.png';
-import ridgeBack from '../assets/RIDGE BACK.png';
+import ridgeFront from '../assets/RIDGE FRONT.webp';
+import ridgeInterior from '../assets/RIDGE INTEROR.webp';
+import ridgeBack from '../assets/RIDGE BACK.webp';
 
 const ARC_VIEWS = [
   {
