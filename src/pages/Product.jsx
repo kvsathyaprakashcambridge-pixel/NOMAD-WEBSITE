@@ -49,6 +49,7 @@ export default function Product() {
   // Horizontal Scroll Gallery State & Refs
   const sectionRef = useRef(null)
   const stickyViewportRef = useRef(null)
+
   const trackRef = useRef(null)
   const galleryViewportRef = useRef(null)
 
@@ -192,14 +193,20 @@ export default function Product() {
   return (
     <main>
       {/* ─── Best Sellers ─── */}
-      <section className="section best-sellers product-catalog" style={{ paddingTop: 110, paddingBottom: '2rem' }} aria-labelledby="best-sellers-title">
+      <section className="section best-sellers product-catalog" aria-labelledby="best-sellers-title">
         <div className="container">
-          <header className="best-sellers-head">
+          <header className="product-page-section-head best-sellers-custom-head">
             <div>
-              <p className="eyebrow">NOMAD / Curated carry</p>
-              <h1 id="best-sellers-title" className="best-sellers-logo-title">NOMAD</h1>
+              <p className="eyebrow">NOMAD / CURATED CARRY</p>
+              <h2 id="best-sellers-title" className="product-editorial-title">
+                <span>THREE ROUTES.</span>
+                <span>THREE DISTINCT</span>
+                <span>CARRY SYSTEMS.</span>
+              </h2>
             </div>
-            <p className="best-sellers-lede">Three distinct silhouettes. One standard of purposeful carry.</p>
+            <p className="product-editorial-lede best-sellers-custom-lede">
+              From restrained city carry to structured technology organisation and trail-ready utility, each profile is built around a different routine.
+            </p>
           </header>
 
           <div className="best-sellers-grid" role="list" aria-label="NOMAD best-selling backpacks">
@@ -238,16 +245,16 @@ export default function Product() {
         <div ref={stickyViewportRef} className="x1-sticky-viewport">
           <div className="x1-scroll-layout">
             <aside className="x1-scroll-editorial">
-              <header className="best-sellers-head">
+              <header className="product-page-section-head" style={{ display: 'block', margin: 0, paddingBottom: '30px' }}>
                 <div>
-                  <p className="eyebrow">NOMAD / Curated carry</p>
+                  <p className="eyebrow">NOMAD <span className="x1-plain-prefix">X1</span> / DESIGN SERIES</p>
                   <h2 className="x1-scroll-title">
-                    <span>BUILT FOR</span>
-                    <span>DIFFERENT</span>
-                    <span>ROUTES.</span>
+                    <span>ONE SYSTEM.</span>
+                    <span>SIX DISTINCT</span>
+                    <span>EXPRESSIONS.</span>
                   </h2>
                 </div>
-                <p className="best-sellers-lede">Six distinct silhouettes. One standard of purposeful carry.</p>
+                <p className="product-editorial-lede" style={{ marginTop: '24px' }}>Six interpretations of the <span className="x1-plain-prefix">X1</span> platform, each shaped around a different visual and functional character.</p>
               </header>
               <div className="x1-scroll-progress-ui">
                 <div className="x1-scroll-counter">
@@ -298,6 +305,7 @@ export default function Product() {
           </div>
         </div>
       </section>
+
 
       {/* ─── Gallery (dark) ─── */}
       <section className="section section-dark">
