@@ -347,6 +347,50 @@ export default function Home() {
               </AnimatePresence>
             </div>
           </div>
+
+          <div className="feature-mobile-layout">
+            <img
+              className="feature-mobile-bag"
+              src={orbitBag}
+              alt="NOMAD X1 modular backpack shown from the front"
+            />
+            
+            <div className="feature-mobile-grid">
+              {PINS.map((pin, index) => {
+                const isActive = index === selectedFeatureIndex;
+                return (
+                  <button 
+                    key={`mobile-pin-${index}`}
+                    type="button" 
+                    className={`feature-mobile-button ${isActive ? 'is-active' : ''}`}
+                    aria-pressed={isActive}
+                    aria-label={pin.title}
+                    onClick={() => setSelectedFeatureIndex(index)}
+                  >
+                    {pin.svg}
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="feature-mobile-panel" aria-live="polite">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={selectedFeatureIndex}
+                  initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0, transition: { duration: 0.22, ease: [0.22, 1, 0.36, 1] } }}
+                  exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -4, transition: { duration: 0.12 } }}
+                  className="feature-mobile-panel-content"
+                >
+                  <p className="feature-mobile-panel-num eyebrow">
+                    {(selectedFeatureIndex + 1).toString().padStart(2, '0')} / {PINS.length}
+                  </p>
+                  <h3 className="feature-mobile-panel-title">{PINS[selectedFeatureIndex].title}</h3>
+                  <p className="feature-mobile-panel-detail">{PINS[selectedFeatureIndex].desc}</p>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
         </div>
       </section>
 
