@@ -105,14 +105,14 @@ export default function Features() {
 
       {/* ─── Feature Rows ─── */}
       <section>
-        <section id="nomad-arc" key="carousel-arc" style={{ background: '#171a19', borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '60px 20px' }}>
-          <BagViewsCarousel views={ARC_VIEWS} autoplay={true} colors={{ name: "#fff", designation: "#888", testimony: "#e1e1e1", arrowBackground: "#2c2e2c", arrowForeground: "#f1f1f7", arrowHoverBackground: "#00a6fb" }} />
+        <section id="nomad-arc" key="carousel-arc" style={{ background: '#EBE5D9', borderBottom: '1px solid rgba(0,0,0,0.05)', padding: '60px 20px' }}>
+          <BagViewsCarousel views={ARC_VIEWS} autoplay={true} colors={{ name: "#171614", designation: "#555", testimony: "#333", arrowBackground: "rgba(0,0,0,0.05)", arrowForeground: "#171614", arrowHoverBackground: "rgba(0,0,0,0.1)" }} />
         </section>
-        <section id="nomad-vector" key="carousel-vector" style={{ background: '#171a19', borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '60px 20px' }}>
-          <BagViewsCarousel views={VECTOR_VIEWS} reverse={true} autoplay={true} colors={{ name: "#fff", designation: "#888", testimony: "#e1e1e1", arrowBackground: "#2c2e2c", arrowForeground: "#f1f1f7", arrowHoverBackground: "#00a6fb" }} />
+        <section id="nomad-vector" key="carousel-vector" style={{ background: '#1F2630', borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '60px 20px' }}>
+          <BagViewsCarousel views={VECTOR_VIEWS} reverse={true} autoplay={true} colors={{ name: "#fff", designation: "#9BA5B5", testimony: "#e1e1e1", arrowBackground: "rgba(255,255,255,0.1)", arrowForeground: "#fff", arrowHoverBackground: "rgba(255,255,255,0.2)" }} />
         </section>
-        <section id="nomad-ridge" key="carousel-ridge" style={{ background: '#171a19', borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '60px 20px' }}>
-          <BagViewsCarousel views={RIDGE_VIEWS} autoplay={true} colors={{ name: "#fff", designation: "#888", testimony: "#e1e1e1", arrowBackground: "#2c2e2c", arrowForeground: "#f1f1f7", arrowHoverBackground: "#00a6fb" }} />
+        <section id="nomad-ridge" key="carousel-ridge" style={{ background: '#4A5445', borderBottom: '1px solid rgba(255,255,255,0.05)', padding: '60px 20px' }}>
+          <BagViewsCarousel views={RIDGE_VIEWS} autoplay={true} colors={{ name: "#fff", designation: "#9AA894", testimony: "#e1e1e1", arrowBackground: "rgba(255,255,255,0.1)", arrowForeground: "#fff", arrowHoverBackground: "rgba(255,255,255,0.2)" }} />
         </section>
       </section>
 
