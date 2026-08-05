@@ -1,6 +1,8 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import signature from '../assets/sathya-prakash-signature.png'
+import founderPhoto from '../assets/founder-photo.jpeg'
+import signatureWebp from '../assets/sathya-prakash-signature-600.webp'
+import signaturePng from '../assets/sathya-prakash-signature.png'
 
 export default function Story() {
   useEffect(() => {
@@ -16,16 +18,98 @@ export default function Story() {
 
   return (
     <main>
-      {/* ─── Page Hero ─── */}
-      <section className="page-hero">
-        <div className="container">
-          <p className="eyebrow">Our story / Fictional concept</p>
-          <h1>We designed NOMAD for lives that refuse to stay in one place.</h1>
-          <p className="lede light-copy">
-            Modern routines move between study, work, creation and travel. NOMAD began with the belief that one thoughtfully designed product should adapt to all four.
-          </p>
+      {/* ─── Part 1: Full uncropped founder photograph ─── */}
+      <section className="story-founder-visual">
+        <img
+          src={founderPhoto}
+          alt="Sathiya Prakash, Founder of NOMAD"
+          className="story-founder-visual__photo"
+          width="2752"
+          height="1536"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+        />
+
+        {/* Edge readability gradient — left and right only */}
+        {/* Handled entirely in CSS via ::after pseudo-element */}
+
+        {/* Small label — sits above annotations */}
+        <p className="story-founder-visual__label" aria-hidden="true">
+          OUR STORY / FOUNDER'S NOTE
+        </p>
+
+        {/* Editorial annotations — decorative only */}
+        <div className="story-founder-visual__annotations" aria-hidden="true">
+
+          {/* Upper-left: origin block */}
+          <div className="story-founder-visual__origin">
+            <span className="story-founder-visual__origin-line" />
+            <span className="story-founder-visual__origin-label">01 / ORIGIN</span>
+            <strong className="story-founder-visual__origin-title">THE FOUNDER</strong>
+          </div>
+
+          {/* Lower-left: role block */}
+          <div className="story-founder-visual__direction">
+            <span>PRODUCT DIRECTION</span>
+            <span>DIGITAL EXPERIENCE</span>
+          </div>
+
+          {/* Right-centre: editorial statement */}
+          <div className="story-founder-visual__statement">
+            <strong>
+              DESIGNED FROM
+              <br />
+              LIVED FRICTION.
+            </strong>
+          </div>
+
+          {/* Lower-right: routine index */}
+          <div className="story-founder-visual__routines">
+            STUDY / WORK / CREATE / MOVE
+          </div>
+
         </div>
       </section>
+
+
+      {/* ─── Part 2: Cream founder note ─── */}
+      <section className="story-founder-note reveal">
+        <div className="story-founder-note__inner">
+
+          <h1 className="story-founder-note__heading">
+            <span>NOMAD BEGAN</span>
+            <span>WITH A PROBLEM</span>
+            <span>I LIVED WITH.</span>
+          </h1>
+
+          <div className="story-founder-note__message">
+            <p className="story-founder-note__statement">
+              Modern routines move between study, work,
+              technology and short journeys—but most carry
+              products are still built around one fixed purpose.
+            </p>
+
+            <picture className="story-founder-note__signature">
+              <source srcSet={signatureWebp} type="image/webp" />
+              <img
+                src={signaturePng}
+                alt="Sathiya Prakash signature"
+                width="600"
+                height="165"
+                decoding="async"
+              />
+            </picture>
+
+            <p className="story-founder-note__name">SATHIYA PRAKASH</p>
+            <p className="story-founder-note__role">
+              Founder · Product Direction · Digital Experience
+            </p>
+          </div>
+
+        </div>
+      </section>
+
 
       {/* ─── The Problem ─── */}
       <section className="section">
@@ -122,7 +206,7 @@ export default function Story() {
         </div>
       </section>
 
-      {/* ─── Signature ─── */}
+      {/* ─── Signature (existing — to be removed in a later phase) ─── */}
       <section className="section signature-section">
         <div className="container" style={{ textAlign: 'center' }}>
           <p className="signature-concept" style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#888', marginBottom: '8px', fontFamily: 'Manrope, Arial, sans-serif' }}>
@@ -132,12 +216,13 @@ export default function Story() {
             SATHIYA PRAKASH
           </p>
           <img 
-            src={signature} 
+            src={signaturePng} 
             alt="Sathya Prakash signature" 
             style={{ width: 'min(280px, 60vw)', height: 'auto', margin: '0 auto', display: 'block', opacity: 0.85, filter: 'brightness(0)' }} 
           />
         </div>
       </section>
+
 
       {/* ─── CTA ─── */}
       <section className="section cta">
