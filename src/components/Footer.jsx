@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import TransitionLink from './ui/TransitionLink'
 
 export default function Footer() {
   return (
@@ -6,22 +7,22 @@ export default function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-brand">
-            <Link className="logo" to="/">
+            <TransitionLink className="logo" to="/">
               <span className="brand">NOMAD</span>
-            </Link>
+            </TransitionLink>
             <p>NOMAD creates adaptable carry products for people who move between study, work and travel.</p>
           </div>
           <div>
             <h3>Navigate</h3>
-            <Link to="/">Home</Link>
-            <Link to="/story">Our Story</Link>
-            <Link to="/contact">Contact</Link>
+            <TransitionLink to="/">Home</TransitionLink>
+            <TransitionLink to="/story">Our Story</TransitionLink>
+            <TransitionLink to="/contact">Contact</TransitionLink>
           </div>
           <div>
             <h3>Product</h3>
-            <Link to="/product">NOMAD X1</Link>
-            <Link to="/features">Features</Link>
-            <Link to="/contact?type=Purchase%20enquiry">Enquire</Link>
+            <TransitionLink to="/product">NOMAD X1</TransitionLink>
+            <TransitionLink to="/features">Features</TransitionLink>
+            <TransitionLink to="/contact?type=Purchase%20enquiry">Enquire</TransitionLink>
           </div>
           <div>
             <h3>Contact</h3>

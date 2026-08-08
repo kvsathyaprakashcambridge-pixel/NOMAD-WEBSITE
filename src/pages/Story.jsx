@@ -206,22 +206,6 @@ export default function Story() {
         </div>
       </section>
 
-      {/* ─── Signature (existing — to be removed in a later phase) ─── */}
-      <section className="section signature-section">
-        <div className="container" style={{ textAlign: 'center' }}>
-          <p className="signature-concept" style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#888', marginBottom: '8px', fontFamily: 'Manrope, Arial, sans-serif' }}>
-            CONCEPT, PRODUCT DIRECTION AND DIGITAL EXPERIENCE
-          </p>
-          <p className="signature-name" style={{ fontSize: '1.2rem', fontWeight: 800, fontFamily: 'Syne, sans-serif', color: '#111312', marginBottom: '16px' }}>
-            SATHIYA PRAKASH
-          </p>
-          <img 
-            src={signaturePng} 
-            alt="Sathya Prakash signature" 
-            style={{ width: 'min(280px, 60vw)', height: 'auto', margin: '0 auto', display: 'block', opacity: 0.85, filter: 'brightness(0)' }} 
-          />
-        </div>
-      </section>
 
 
       {/* ─── CTA ─── */}

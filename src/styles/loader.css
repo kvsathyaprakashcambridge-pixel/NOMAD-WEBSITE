@@ -1,0 +1,82 @@
+/* ======================================================
+   NOMAD — WordLoader transition overlay
+   Scoped entirely to .word-loader to avoid leaking.
+====================================================== */
+
+/* Full-screen coverage */
+.word-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none; /* prevent click-through while entering */
+  will-change: opacity, transform;
+}
+
+/* Full variant — deep NOMAD dark */
+.word-loader--full {
+  background: #0a0b09;
+  pointer-events: all;
+}
+
+/* Light variant — subtle frosted context overlay */
+.word-loader--light {
+  background: rgba(10, 11, 9, 0.72);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  pointer-events: all;
+}
+
+/* Stage holds the absolutely-positioned word layers */
+.wl-stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Individual word rows */
+.wl-word {
+  margin: 0;
+  padding: 0;
+  /* inline-flex to let chars sit side-by-side */
+  font-family: 'Syne', Arial, sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.055em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #f4f1ea;
+  /* font size */
+  font-size: clamp(64px, 10vw, 148px);
+  /* position set via inline style in JSX */
+}
+
+/* Light variant — slightly smaller */
+.word-loader--light .wl-word {
+  font-size: clamp(40px, 6vw, 88px);
+  color: rgba(244, 241, 234, 0.92);
+}
+
+/* Individual character spans — GSAP targets these */
+.wl-char {
+  display: inline-block;
+}
+
+/* Small editorial label — full variant only */
+.wl-label {
+  position: absolute;
+  bottom: clamp(24px, 4vw, 54px);
+  left: clamp(24px, 5vw, 64px);
+  font-family: 'Manrope', Arial, sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(197, 93, 45, 0.55); /* NOMAD orange, very muted */
+}
+
+/* Reduced motion — disable char animation via GSAP; handled in JS */
+@media (prefers-reduced-motion: reduce) {
+  .wl-word, .wl-char { transition: none !important; }
+}

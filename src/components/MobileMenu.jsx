@@ -1,4 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
+import TransitionLink from './ui/TransitionLink'
 
 const mobileItems = [
   {
@@ -28,7 +29,7 @@ export default function MobileMenu() {
   return (
     <nav className="mobile-menu" aria-label="Mobile navigation">
       {mobileItems.map(({ label, to, paths }) => (
-        <Link
+        <TransitionLink
           key={to}
           to={to}
           className={`mobile-menu__item${location.pathname === to ? ' active' : ''}`}
@@ -38,7 +39,7 @@ export default function MobileMenu() {
             {paths.map((d, i) => <path key={i} d={d} />)}
           </svg>
           <span>{label}</span>
-        </Link>
+        </TransitionLink>
       ))}
     </nav>
   )

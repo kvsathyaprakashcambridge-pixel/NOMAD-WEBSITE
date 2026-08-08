@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import TransitionLink from './ui/TransitionLink'
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false)
@@ -54,14 +55,15 @@ export default function Header() {
 
         <div className={`nav-links${menuOpen ? ' open' : ''}`}>
           {navLinks.map(({ label, to }) => (
-            <Link
+            <TransitionLink
               key={to}
               to={to}
               className={location.pathname === to ? 'active' : ''}
             >
               {label}
-            </Link>
+            </TransitionLink>
           ))}
+
         </div>
 
         <div className="nav-actions">
