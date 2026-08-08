@@ -2743,7 +2743,7 @@
   background: var(--paper, #f4f1e9);
   color: var(--ink, #111312);
   padding:
-    clamp(88px, 9vw, 140px)
+    clamp(40px, 4vw, 64px)
     clamp(40px, 6vw, 88px);
   transition: opacity 0.4s var(--ease, cubic-bezier(.2,.7,.2,1)),
               transform 0.4s var(--ease, cubic-bezier(.2,.7,.2,1));

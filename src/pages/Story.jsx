@@ -72,7 +72,7 @@ export default function Story() {
         </div>
       </section>
 
-
+      
       {/* ─── Part 2: Cream founder note ─── */}
       <section className="story-founder-note reveal">
         <div className="story-founder-note__inner">
@@ -110,109 +110,54 @@ export default function Story() {
         </div>
       </section>
 
+{/* ─── The Friction ─── */}
+      <section className="section section-dark story-friction" style={{ padding: '140px 0', backgroundColor: '#0A0A0A' }}>
+        <div className="container">
+          <div style={{ maxWidth: '840px' }}>
+            
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', margin: '0 0 40px -4px' }}>
+              <div style={{ width: '24px', height: '1px', backgroundColor: '#E26D3F' }}></div>
+              <p className="eyebrow" style={{ color: '#E26D3F', margin: 0, letterSpacing: '0.12em', fontSize: '11px', textTransform: 'uppercase' }}>THE FRICTION</p>
+            </div>
+            
+            <h2 style={{ fontSize: 'clamp(44px, 6vw, 64px)', lineHeight: 1.05, letterSpacing: '-0.02em', margin: '0 0 100px 0', color: '#F3EFE5', fontWeight: 600 }}>
+              Every bag I owned made<br/>me choose.
+            </h2>
 
-      {/* ─── The Problem ─── */}
-      <section className="section">
-        <div className="container editorial-grid">
-          <div>
-            <p className="eyebrow">The problem</p>
-            <h2>Backpacks were either organised, comfortable or adaptable. Rarely all three.</h2>
+            <div className="story-friction-notes" style={{ position: 'relative', display: 'flex', flexDirection: 'column', gap: '64px', borderLeft: '1px solid rgba(243, 239, 229, 0.1)', marginLeft: '5px' }}>
+              
+              <div className="friction-note" style={{ position: 'relative', paddingLeft: '40px' }}>
+                <div style={{ position: 'absolute', left: '-5px', top: '6px', width: '9px', height: '9px', borderRadius: '50%', backgroundColor: '#E26D3F' }}></div>
+                <time style={{ display: 'block', color: '#F3EFE5', fontSize: '12px', fontWeight: 700, letterSpacing: '0.08em', marginBottom: '16px', opacity: 0.9 }}>7:12 AM</time>
+                <p style={{ color: 'rgba(243, 239, 229, 0.7)', fontSize: '13px', lineHeight: 1.8, margin: 0, fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace', textTransform: 'lowercase', letterSpacing: '0.05em', maxWidth: '580px' }}>— laptop charger tangled with earphones, both stuck under a textbook i didn't need until noon.</p>
+              </div>
+
+              <div className="friction-note" style={{ position: 'relative', paddingLeft: '40px' }}>
+                <div style={{ position: 'absolute', left: '-5px', top: '6px', width: '9px', height: '9px', borderRadius: '50%', backgroundColor: '#E26D3F' }}></div>
+                <time style={{ display: 'block', color: '#F3EFE5', fontSize: '12px', fontWeight: 700, letterSpacing: '0.08em', marginBottom: '16px', opacity: 0.9 }}>2:45 PM</time>
+                <p style={{ color: 'rgba(243, 239, 229, 0.7)', fontSize: '13px', lineHeight: 1.8, margin: 0, fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace', textTransform: 'lowercase', letterSpacing: '0.05em', maxWidth: '580px' }}>— a strap slipping off one shoulder mid-run for a bus, everything shifting to one side.</p>
+              </div>
+
+              <div className="friction-note" style={{ position: 'relative', paddingLeft: '40px' }}>
+                <div style={{ position: 'absolute', left: '-5px', top: '6px', width: '9px', height: '9px', borderRadius: '50%', backgroundColor: '#E26D3F' }}></div>
+                <time style={{ display: 'block', color: '#F3EFE5', fontSize: '12px', fontWeight: 700, letterSpacing: '0.08em', marginBottom: '16px', opacity: 0.9 }}>11:30 PM</time>
+                <p style={{ color: 'rgba(243, 239, 229, 0.7)', fontSize: '13px', lineHeight: 1.8, margin: 0, fontFamily: 'ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace', textTransform: 'lowercase', letterSpacing: '0.05em', maxWidth: '580px' }}>— emptying the whole bag onto the floor to find one usb cable.</p>
+              </div>
+
+            </div>
+            
+            <blockquote className="pull-quote" style={{ margin: '120px 0 80px 0' }}>
+              <h2 style={{ fontSize: 'clamp(40px, 5.5vw, 60px)', lineHeight: 1.1, letterSpacing: '-0.02em', margin: 0, color: '#F3EFE5', fontWeight: 600 }}>
+                None of it was really about<br/>the bag. It was about how<br/>much of my day I was losing<br/>to it.
+              </h2>
+            </blockquote>
           </div>
-          <ul className="problem-list">
-            <li>Too many unnecessary compartments</li>
-            <li>Poor weight distribution</li>
-            <li>Limited flexibility</li>
-            <li>Visually bulky designs</li>
-            <li>Weak protection for technology</li>
-          </ul>
-        </div>
-      </section>
 
-      {/* ─── The Idea ─── */}
-      <section className="section section-dark">
-        <div className="container split">
-          <div>
-            <p className="eyebrow">The idea</p>
-            <h2>One controlled silhouette. Multiple configurations.</h2>
-            <p className="lede light-copy">
-              NOMAD <span className="x1-normal">X1</span> combines modular organisation, discreet expansion and everyday comfort within one restrained form.
+          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <p className="friction-close" style={{ margin: 0, textAlign: 'right', maxWidth: '480px', fontSize: '16px', lineHeight: 1.5, color: '#E26D3F' }}>
+              If you've unpacked your whole bag to find one thing, you already know the problem NOMAD was built to solve.
             </p>
           </div>
-          <div className="bag-stage">
-            <div className="bag small">
-              <i className="bag-handle" />
-              <i className="bag-zip" />
-              <i className="bag-pocket" />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Design Principles ─── */}
-      <section className="section">
-        <div className="container">
-          <p className="eyebrow">Design principles</p>
-          <div className="cards-4">
-            {[
-              { num: '01', title: 'Purposeful', desc: 'Every component must solve a visible problem.' },
-              { num: '02', title: 'Adaptable', desc: 'The product must respond to different routines.' },
-              { num: '03', title: 'Durable', desc: 'Materials and construction must support regular use.' },
-              { num: '04', title: 'Restrained', desc: 'The appearance must remain clean and uncomplicated.' },
-            ].map(({ num, title, desc }) => (
-              <article key={num} className="card">
-                <div className="feature-num" style={{ color: '#11121015' }}>{num}</div>
-                <h3>{title}</h3>
-                <p>{desc}</p>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Timeline ─── */}
-      <section className="section">
-        <div className="container">
-          <p className="eyebrow">Development process</p>
-          <h2>From observation to a coherent system.</h2>
-          <p className="lede">A fictional concept-development timeline created to demonstrate a realistic product-design process.</p>
-          <div className="timeline">
-            {[
-              ['01', 'Observation'],
-              ['02', 'Sketching'],
-              ['03', 'Material testing'],
-              ['04', 'Organisation studies'],
-              ['05', 'Prototype refinement'],
-              ['06', 'NOMAD X1'],
-            ].map(([step, label]) => (
-              <div key={step} className="timeline-step">
-                <small>{step}</small>
-                <b>{label}</b>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─── Material Responsibility ─── */}
-      <section className="section section-soft">
-        <div className="container intro-head">
-          <div>
-            <p className="eyebrow">Material responsibility</p>
-            <h2>Designed with material responsibility in mind.</h2>
-          </div>
-          <p className="lede light-copy">
-            NOMAD <span className="x1-normal">X1</span> conceptually uses recycled polyester, replaceable modular components and durable construction intended to support longer product life.
-          </p>
-        </div>
-      </section>
-
-
-
-      {/* ─── CTA ─── */}
-      <section className="section cta">
-        <div className="container">
-          <h2>See the result of purposeful design.</h2>
-          <Link className="btn" to="/product">Explore NOMAD <span className="x1-normal">X1</span></Link>
         </div>
       </section>
     </main>
