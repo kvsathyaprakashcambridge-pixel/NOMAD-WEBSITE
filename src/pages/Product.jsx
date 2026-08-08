@@ -2,7 +2,6 @@ import { useEffect, useRef, useState, useLayoutEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion, useScroll, useTransform, useMotionValueEvent, AnimatePresence } from 'framer-motion'
 import ProductPrice from '../components/ProductPrice'
-import { useLoader } from '../context/LoaderContext'
 
 import arcImg from '../assets/replace arc.webp'
 import vectorImg from '../assets/replace vector.webp'
@@ -194,7 +193,6 @@ function formatProductName(name) {
 
 export default function Product() {
   const navigate = useNavigate()
-  const { showLoader, hideLoader } = useLoader()
 
   // Horizontal Scroll Gallery State & Refs
   const sectionRef = useRef(null)
@@ -563,13 +561,7 @@ export default function Product() {
                       type="button"
                       className={`x1-system-viewer__selector ${isActive ? 'is-active' : ''}`}
                       aria-pressed={isActive}
-                      onClick={() => {
-                        if (activeGalleryItem === item.id) return
-                        showLoader({ variant: 'light', words: ['NOMAD'] }).then(() => {
-                          setActiveGalleryItem(item.id)
-                          hideLoader()
-                        })
-                      }}
+                      onClick={() => setActiveGalleryItem(item.id)}
                       onPointerEnter={() => preloadGalleryUrl(item.image)}
                       onFocus={() => preloadGalleryUrl(item.image)}
                     >
