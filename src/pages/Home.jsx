@@ -261,7 +261,7 @@ export default function Home() {
               className="hero-bag-image"
               src={heroFull}
               alt="Black NOMAD X1 modular backpack shown from the front"
-              fetchpriority="high"
+              fetchPriority="high"
               initial="hidden" animate="visible" variants={bagVariants}
             />
           </div>

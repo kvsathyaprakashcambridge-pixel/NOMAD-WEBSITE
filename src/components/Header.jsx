@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { motion, AnimatePresence } from 'framer-motion'
+import { useCart } from '../context/CartContext'
 import TransitionLink from './ui/TransitionLink'
 
 export default function Header() {
@@ -9,6 +11,8 @@ export default function Header() {
   const searchRef = useRef(null)
   const location = useLocation()
   const isHome = location.pathname === '/'
+  
+  const { state, dispatch, totalItems } = useCart()
 
   useEffect(() => {
     let ticking = false
@@ -72,16 +76,40 @@ export default function Header() {
               {label}
             </TransitionLink>
           ))}
-
         </div>
 
         <div className="nav-actions">
-          <Link className="nav-action" to="/product" aria-label="View NOMAD X1">
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M6 8h12l1 13H5L6 8Z"/>
-              <path d="M9 9V6a3 3 0 0 1 6 0v3"/>
+          <button
+            id="manifest-nav-icon"
+            className="nav-action"
+            aria-label="Toggle Manifest"
+            onClick={() => dispatch({ type: 'TOGGLE_PANEL' })}
+            style={{ position: 'relative', display: 'flex', alignItems: 'center', cursor: 'pointer', background: 'none', border: 'none', padding: 0 }}
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" style={{ width: '20px', height: '20px' }}>
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M3 6h18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M16 10a4 4 0 0 1-8 0" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
             </svg>
-          </Link>
+            {totalItems > 0 && (
+              <motion.span 
+                key={state.lastAddedTimestamp}
+                initial={{ scale: 0 }}
+                animate={{ scale: [0, 1.3, 1] }}
+                transition={{ duration: 0.3 }}
+                style={{
+                  position: 'absolute',
+                  top: '2px',
+                  right: '1px',
+                  width: '8px',
+                  height: '8px',
+                  background: '#E26D3F',
+                  borderRadius: '50%',
+                  pointerEvents: 'none'
+                }}
+              />
+            )}
+          </button>
 
           <button
             className="nav-action nav-search-toggle"

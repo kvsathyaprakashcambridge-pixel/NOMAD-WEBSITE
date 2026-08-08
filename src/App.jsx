@@ -7,7 +7,9 @@ import MobileMenu from './components/MobileMenu'
 import BackTop from './components/BackTop'
 import WordLoader from './components/ui/WordLoader'
 import RouteReadiness from './components/ui/RouteReadiness'
+import ManifestPanel from './components/ManifestPanel'
 import { LoaderProvider, useLoader } from './context/LoaderContext'
+import { CartProvider } from './context/CartContext'
 import './styles/globals.css'
 import './styles/home.css'
 import './styles/loader.css'
@@ -37,6 +39,7 @@ function AppInner() {
       </Suspense>
       <Footer />
       <MobileMenu />
+      <ManifestPanel />
       <BackTop />
 
       {/* Global overlay — mounted once, GSAP controls visibility */}
@@ -53,7 +56,9 @@ function App() {
   return (
     <BrowserRouter>
       <LoaderProvider>
-        <AppInner />
+        <CartProvider>
+          <AppInner />
+        </CartProvider>
       </LoaderProvider>
     </BrowserRouter>
   )

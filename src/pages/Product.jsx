@@ -2,11 +2,40 @@ import { useEffect, useRef, useState, useLayoutEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { motion, useScroll, useTransform, useMotionValueEvent, AnimatePresence } from 'framer-motion'
 import ProductPrice from '../components/ProductPrice'
+import { useCart } from '../context/CartContext'
 
 import arcImg from '../assets/replace arc.webp'
 import vectorImg from '../assets/replace vector.webp'
 import ridgeImg from '../assets/replace ridge.webp'
 import obsidianImg from '../assets/nomad-x1-obsidian-uploaded.webp'
+
+function flyToManifest(sourceEl, targetEl, onComplete) {
+  const start = sourceEl.getBoundingClientRect();
+  const end = targetEl.getBoundingClientRect();
+  const clone = document.createElement('div');
+  clone.className = 'fly-clone';
+  Object.assign(clone.style, {
+    position: 'fixed', 
+    left: (start.left + start.width/2 - 12) + 'px', 
+    top: (start.top + start.height/2 - 12) + 'px',
+    width: '24px', height: '24px',
+    background: '#E26D3F', borderRadius: '50%',
+    transition: 'all 0.9s cubic-bezier(0.22,1,0.36,1)', zIndex: 999,
+    pointerEvents: 'none'
+  });
+  document.body.appendChild(clone);
+  requestAnimationFrame(() => {
+    Object.assign(clone.style, {
+      left: (end.left + end.width/2 - 12) + 'px',
+      top: (end.top + end.height/2 - 12) + 'px',
+      opacity: '0.15', transform: 'scale(0.5)'
+    });
+  });
+  setTimeout(() => {
+    clone.remove();
+    if (onComplete) onComplete();
+  }, 900);
+}
 import armorImg from '../assets/x1-armor.webp'
 import facetImg from '../assets/x1-facet.webp'
 import layerImg from '../assets/x1-layer.webp'
@@ -36,18 +65,18 @@ import galleryExpansion800 from '../assets/nomad-x1-gallery-05-expansion-800.web
 import galleryExpansion1200 from '../assets/nomad-x1-gallery-05-expansion-1200.webp'
 
 const BEST_SELLERS = [
-  { index: '01 / CITY',  series: 'Minimal everyday carry',    name: 'NOMAD ARC',    colour: 'Sandstone', price: '\u20b93,999', img: arcImg,    alt: 'NOMAD ARC minimalist sandstone backpack',          cls: 'best-seller-card-arc' },
-  { index: '02 / TECH',  series: 'Structured tech carry',     name: 'NOMAD VECTOR', colour: 'Midnight',  price: '\u20b95,499', img: vectorImg, alt: 'NOMAD VECTOR midnight blue technology backpack',     cls: 'best-seller-card-vector' },
-  { index: '03 / TRAIL', series: 'Trail-ready utility',       name: 'NOMAD RIDGE',  colour: 'Moss',      price: '\u20b96,299', img: ridgeImg,  alt: 'NOMAD RIDGE moss green expedition backpack',         cls: 'best-seller-card-ridge' },
+  { index: '01 / CITY',  series: 'Minimal everyday carry',    name: 'NOMAD ARC',    colour: 'Sandstone', price: 3999, img: arcImg,    alt: 'NOMAD ARC minimalist sandstone backpack',          cls: 'best-seller-card-arc' },
+  { index: '02 / TECH',  series: 'Structured tech carry',     name: 'NOMAD VECTOR', colour: 'Midnight',  price: 5499, img: vectorImg, alt: 'NOMAD VECTOR midnight blue technology backpack',     cls: 'best-seller-card-vector' },
+  { index: '03 / TRAIL', series: 'Trail-ready utility',       name: 'NOMAD RIDGE',  colour: 'Moss',      price: 6299, img: ridgeImg,  alt: 'NOMAD RIDGE moss green expedition backpack',         cls: 'best-seller-card-ridge' },
 ]
 
 const X1_LINEUP = [
-  { index: '01 / ORIGINAL', series: 'Original modular carry',       name: 'NOMAD X1',   colour: 'Obsidian Black', img: obsidianImg, alt: 'NOMAD X1 Original backpack in Obsidian Black',        cls: 'best-seller-card-arc' },
-  { index: '02 / ARMOR',    series: 'Impact-shield carry',          name: 'X1 ARMOR',   colour: 'Obsidian Black', img: armorImg,    alt: 'NOMAD X1 Armor hard-shell backpack in Obsidian Black', cls: 'best-seller-card-arc' },
-  { index: '03 / FACET',    series: 'Sculpted tech shell',          name: 'X1 FACET',   colour: 'Obsidian Black', img: facetImg,    alt: 'NOMAD X1 Facet sculpted tech backpack in Obsidian Black', cls: 'best-seller-card-arc' },
-  { index: '04 / LAYER',    series: 'Multi-compartment carry',      name: 'X1 LAYER',   colour: 'Obsidian Black', img: layerImg,    alt: 'NOMAD X1 Layer multi-compartment backpack in Obsidian Black', cls: 'best-seller-card-arc' },
-  { index: '05 / MODULE',   series: 'Expandable utility system',    name: 'X1 MODULE',  colour: 'Obsidian Black', img: moduleImg,   alt: 'NOMAD X1 Module utility backpack in Obsidian Black',   cls: 'best-seller-card-arc' },
-  { index: '06 / ROLL',     series: 'Flexible roll-top carry',      name: 'X1 ROLL',    colour: 'Obsidian Black', img: rollImg,     alt: 'NOMAD X1 Roll flexible roll-top backpack in Obsidian Black', cls: 'best-seller-card-arc' },
+  { index: '01 / ORIGINAL', series: 'Original modular carry',       name: 'NOMAD X1',   colour: 'Obsidian Black', price: 8999,  img: obsidianImg, alt: 'NOMAD X1 Original backpack in Obsidian Black',        cls: 'best-seller-card-arc' },
+  { index: '02 / ARMOR',    series: 'Impact-shield carry',          name: 'X1 ARMOR',   colour: 'Obsidian Black', price: 11499, img: armorImg,    alt: 'NOMAD X1 Armor hard-shell backpack in Obsidian Black', cls: 'best-seller-card-arc' },
+  { index: '03 / FACET',    series: 'Sculpted tech shell',          name: 'X1 FACET',   colour: 'Obsidian Black', price: 10299, img: facetImg,    alt: 'NOMAD X1 Facet sculpted tech backpack in Obsidian Black', cls: 'best-seller-card-arc' },
+  { index: '04 / LAYER',    series: 'Multi-compartment carry',      name: 'X1 LAYER',   colour: 'Obsidian Black', price: 9499,  img: layerImg,    alt: 'NOMAD X1 Layer multi-compartment backpack in Obsidian Black', cls: 'best-seller-card-arc' },
+  { index: '05 / MODULE',   series: 'Expandable utility system',    name: 'X1 MODULE',  colour: 'Obsidian Black', price: 12999, img: moduleImg,   alt: 'NOMAD X1 Module utility backpack in Obsidian Black',   cls: 'best-seller-card-arc' },
+  { index: '06 / ROLL',     series: 'Flexible roll-top carry',      name: 'X1 ROLL',    colour: 'Obsidian Black', price: 9999,  img: rollImg,     alt: 'NOMAD X1 Roll flexible roll-top backpack in Obsidian Black', cls: 'best-seller-card-arc' },
 ]
 
 const ROUTINES = [
@@ -193,6 +222,7 @@ function formatProductName(name) {
 
 export default function Product() {
   const navigate = useNavigate()
+  const { dispatch } = useCart()
 
   // Horizontal Scroll Gallery State & Refs
   const sectionRef = useRef(null)
@@ -391,9 +421,23 @@ export default function Product() {
                     <h2>{p.name}</h2>
                     <span className="best-seller-colour">{p.colour}</span>
                   </div>
-                  <div className="best-seller-buy">
+                  <div className="best-seller-buy" style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'center' }}>
                     <strong><ProductPrice priceString={p.price} /></strong>
-                    <Link to="/contact?type=Purchase%20enquiry" aria-label={`Enquire about ${p.name}`}>+</Link>
+                    <button 
+                      aria-label={`Add to Manifest for ${p.name}`}
+                      onClick={(e) => {
+                        e.preventDefault()
+                        dispatch({ type: 'ADD_ITEM', payload: { id: p.name, name: p.name, variant: p.colour, price: p.price, img: p.img } })
+                        const btn = e.currentTarget
+                        const nav = document.getElementById('manifest-nav-icon')
+                        if (nav) flyToManifest(btn, nav, () => dispatch({ type: 'TOGGLE_PANEL', payload: true }))
+                      }}
+                    >
+                      +
+                    </button>
+                    <Link to="/contact?type=Purchase%20enquiry" aria-label={`Enquire about ${p.name}`} style={{ fontSize: '12px', textDecoration: 'underline', color: 'rgba(17, 19, 18, 0.6)' }}>
+                      Product enquiry
+                    </Link>
                   </div>
                 </div>
               </article>
@@ -455,9 +499,23 @@ export default function Product() {
                         <h3><span className="x1-normal">{formatProductName(p.name)}</span></h3>
                         <span className="best-seller-colour">{p.colour}</span>
                       </div>
-                      <div className="best-seller-buy">
-                        <span className="x1-lineup-action-label">Explore</span>
-                        <Link to="/contact?type=Product%20question" aria-label={`Explore ${p.name}`}>+</Link>
+                      <div className="best-seller-buy" style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'center' }}>
+                        <strong><ProductPrice priceString={p.price} /></strong>
+                        <button 
+                          aria-label={`Add to Manifest for ${p.name}`}
+                          onClick={(e) => {
+                            e.preventDefault()
+                            dispatch({ type: 'ADD_ITEM', payload: { id: p.name, name: p.name, variant: p.colour, price: p.price, img: p.img } })
+                            const btn = e.currentTarget
+                            const nav = document.getElementById('manifest-nav-icon')
+                            if (nav) flyToManifest(btn, nav, () => dispatch({ type: 'TOGGLE_PANEL', payload: true }))
+                          }}
+                        >
+                          +
+                        </button>
+                        <Link to="/contact?type=Product%20question" aria-label={`Explore ${p.name}`} style={{ fontSize: '12px', textDecoration: 'underline', color: 'rgba(17, 19, 18, 0.6)' }}>
+                          Product enquiry
+                        </Link>
                       </div>
                     </div>
                   </article>

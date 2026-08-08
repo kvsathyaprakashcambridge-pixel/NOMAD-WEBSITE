@@ -905,7 +905,7 @@
   font: 700 1rem/1 'Syne', sans-serif;
   color: var(--ink);
 }
-.best-seller-buy a {
+.best-seller-buy button {
   display: grid;
   place-items: center;
   width: 40px;
@@ -919,8 +919,10 @@
   color: #fff;
   transition: background .2s, transform .2s, box-shadow .2s;
   box-shadow: 0 4px 12px rgba(197,93,45,.35);
+  cursor: pointer;
+  padding: 0;
 }
-.best-seller-buy a:hover {
+.best-seller-buy button:hover {
   background: #a94720;
   transform: scale(1.1);
   box-shadow: 0 6px 18px rgba(197,93,45,.45);
@@ -1766,6 +1768,38 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+.best-seller-buy strong {
+  display: block;
+  font-family: var(--font-display, "Syne");
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--ink);
+}
+.best-seller-buy button {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  font-weight: 300;
+  line-height: 1;
+  background: var(--orange);
+  color: #fff;
+  transition: background .2s, transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 12px rgba(197,93,45,.35);
+  cursor: pointer;
+}
+.best-seller-buy button:hover {
+  background: #a94720;
+  transform: scale(1.1);
+  box-shadow: 0 6px 18px rgba(197,93,45,.45);
+}
+.x1-lineup-action-label {
+  font-size: 2rem;
+  color: var(--text-primary);
 }
 .x1-scroll-counter {
   font-family: var(--font-display, "Syne");
