@@ -48,7 +48,7 @@
   text-transform: uppercase;
   color: #f4f1ea;
   /* font size */
-  font-size: clamp(64px, 10vw, 148px);
+  font-size: clamp(40px, 12vw, 148px);
   /* position set via inline style in JSX */
 }
 

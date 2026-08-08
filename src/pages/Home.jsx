@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, useReducedMotion, AnimatePresence } from 'framer-motion'
 import heroFull from '../assets/REPLACE-HERO.webp'
-import signature from '../assets/sathya-prakash-signature.png'
+import signature from '../assets/sathya-prakash-signature-600.webp'
 import orbitBag from '../assets/nomad-x1-orbit.webp'
 import ConfigurationSystem from '../components/ConfigurationSystem'
 import ProductPrice from '../components/ProductPrice'
@@ -261,6 +261,7 @@ export default function Home() {
               className="hero-bag-image"
               src={heroFull}
               alt="Black NOMAD X1 modular backpack shown from the front"
+              fetchpriority="high"
               initial="hidden" animate="visible" variants={bagVariants}
             />
           </div>
@@ -304,6 +305,8 @@ export default function Home() {
                     className="feature-product-bag"
                     src={orbitBag}
                     alt="NOMAD X1 modular backpack shown from the front"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </figure>
 
@@ -354,6 +357,8 @@ export default function Home() {
               className="feature-mobile-bag"
               src={orbitBag}
               alt="NOMAD X1 modular backpack shown from the front"
+              loading="lazy"
+              decoding="async"
             />
             
             <div className="feature-mobile-grid">

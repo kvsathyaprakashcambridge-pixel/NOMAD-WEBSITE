@@ -1020,12 +1020,35 @@
   .product-focus-card { grid-template-columns: 1fr; }
   .product-focus-image-shell { min-height: 380px; }
   .product-page-section-head { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; margin-bottom: 40px; }
-  .product-editorial-title { font-size: clamp(46px, 7vw, 68px); }
+  .product-editorial-title { font-size: clamp(38px, 9vw, 68px); max-width: 100%; }
   .best-sellers-head { margin-bottom: 40px; }
   .best-sellers-grid { grid-template-columns: 1fr; }
   .x1-lineup-grid { grid-template-columns: 1fr; }
   .x1-lineup-head { flex-direction: column; align-items: flex-start; }
-  .curated-carry-title { font-size: clamp(52px, 9vw, 76px); }
+  .curated-carry-title { font-size: clamp(40px, 9vw, 76px); max-width: 100%; }
+  .story-founder-note__heading { font-size: clamp(42px, 8vw, 64px); max-width: 100%; }
+
+  .x1-gallery-viewport {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-inline: contain;
+    -webkit-overflow-scrolling: touch;
+    width: 100vw;
+    scrollbar-width: none;
+    margin-inline: -16px;
+  }
+  .x1-gallery-viewport::-webkit-scrollbar {
+    display: none;
+  }
+  .x1-horizontal-track {
+    /* Calculate dynamic padding to allow first and last card to perfectly center: 50vw - (card width / 2) */
+    padding-inline: calc(50vw - (clamp(300px, 30vw, 400px) / 2));
+    gap: 16px;
+  }
+  .x1-horizontal-track .x1-lineup-card {
+    scroll-snap-align: center;
+  }
 }
 
 @media (max-width: 479px) {

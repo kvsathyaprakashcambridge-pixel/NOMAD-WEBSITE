@@ -166,6 +166,8 @@ export const BagViewsCarousel = ({
                 alt={view.name}
                 className="testimonial-image"
                 data-index={index}
+                loading={index === 0 ? "eager" : "lazy"}
+                decoding="async"
               />
             </div>
           ))}

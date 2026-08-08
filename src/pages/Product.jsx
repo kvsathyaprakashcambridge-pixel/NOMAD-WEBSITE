@@ -383,7 +383,7 @@ export default function Product() {
                 <div className="best-seller-visual">
                   <span className="best-seller-index">{p.index}</span>
                   <span className="best-seller-watermark" aria-hidden="true">NOMAD</span>
-                  <img src={p.img} alt={p.alt} />
+                  <img src={p.img} alt={p.alt} loading="lazy" decoding="async" />
                 </div>
                 <div className="best-seller-info">
                   <div>

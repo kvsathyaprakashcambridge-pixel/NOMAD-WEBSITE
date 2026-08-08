@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import founderPhoto from '../assets/founder-photo.jpeg'
+import founderPhoto from '../assets/founder-photo.webp'
 import signatureWebp from '../assets/sathya-prakash-signature-600.webp'
 import signaturePng from '../assets/sathya-prakash-signature.png'
 
