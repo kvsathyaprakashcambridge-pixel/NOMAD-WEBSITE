@@ -2767,21 +2767,27 @@
 
 /* ── Mobile: below 768px ── */
 @media (max-width: 767px) {
-  /* Show only the small 01 / ORIGIN label */
-  .story-founder-visual__direction,
-  .story-founder-visual__statement,
-  .story-founder-visual__routines {
-    display: none;
+  .story-founder-note {
+    padding: 64px 20px 72px;
   }
 
-  /* Hide THE FOUNDER text, keep 01 / ORIGIN */
-  .story-founder-visual__origin-title {
-    display: none;
+  .story-founder-note__heading {
+    font-size: clamp(42px, 12vw, 62px);
+    line-height: 0.89;
   }
 
-  .story-founder-visual__origin {
-    top: clamp(18px, 4vw, 36px);
-    right: clamp(16px, 5vw, 32px);
+  .story-founder-note__message {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .story-founder-note__sign-block {
+    text-align: center;
+  }
+
+  .story-founder-note__statement {
+    font-size: 15px;
   }
 }
 
@@ -2799,55 +2805,34 @@
 .story-founder-note {
   background: var(--paper, #f4f1e9);
   color: var(--ink, #111312);
-  padding:
-    clamp(40px, 4vw, 64px)
-    clamp(40px, 6vw, 88px);
-  transition: opacity 0.4s var(--ease, cubic-bezier(.2,.7,.2,1)),
-              transform 0.4s var(--ease, cubic-bezier(.2,.7,.2,1));
+  padding: clamp(40px, 4vw, 64px) clamp(40px, 6vw, 88px);
 }
 
 .story-founder-note__inner {
   width: min(100%, 1360px);
   margin-inline: auto;
-  display: grid;
-  grid-template-columns:
-    minmax(0, 1.2fr)
-    minmax(320px, 0.8fr);
-  gap: clamp(64px, 9vw, 140px);
-  align-items: start;
 }
 
-/* ── Heading ── */
-.story-founder-note__heading {
-  display: grid;
-  margin: 0;
-  max-width: 820px;
-  font-size: clamp(58px, 6.3vw, 96px);
-  line-height: 0.87;
-  letter-spacing: -0.055em;
-  color: inherit;
-  font-family: 'Syne', Arial, sans-serif;
-  font-weight: 800;
-}
-
-.story-founder-note__heading span {
-  display: block;
-}
-
-/* ── Message column ── */
 .story-founder-note__message {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-top: 8px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 40px;
 }
 
 .story-founder-note__statement {
   max-width: 460px;
-  margin: 0 0 34px;
+  margin: 0;
   font-size: 17px;
   line-height: 1.65;
   color: rgba(23, 22, 20, 0.68);
+  text-align: center;
+}
+
+.story-founder-note__sign-block {
+  text-align: center;
 }
 
 .story-founder-note__signature {
@@ -2860,6 +2845,7 @@
   display: block;
   width: clamp(220px, 26vw, 340px);
   height: auto;
+  margin-inline: auto;
 }
 
 .story-founder-note__name {
@@ -2879,33 +2865,20 @@
   font-family: 'Manrope', Arial, sans-serif;
 }
 
-/* ── Tablet: below 1000px ── */
-@media (max-width: 999px) {
-  .story-founder-note__inner {
-    grid-template-columns: 1fr;
-    gap: 44px;
-  }
-}
-
 /* ── Mobile: below 768px ── */
 @media (max-width: 767px) {
   .story-founder-note {
     padding: 64px 20px 72px;
   }
-
-  .story-founder-note__heading {
-    font-size: clamp(42px, 12vw, 62px);
-    line-height: 0.89;
+  .story-founder-note__message {
+    flex-direction: column;
+    gap: 40px;
   }
-
   .story-founder-note__statement {
+    text-align: center;
     font-size: 15px;
   }
-}
-
-/* ── Reduced motion ── */
-@media (prefers-reduced-motion: reduce) {
-  .story-founder-note {
-    transition: none;
+  .story-founder-note__sign-block {
+    text-align: center;
   }
 }

@@ -19,6 +19,7 @@ const Product = lazy(() => import('./pages/Product'))
 const Features = lazy(() => import('./pages/Features'))
 const Story = lazy(() => import('./pages/Story'))
 const Contact = lazy(() => import('./pages/Contact'))
+const X1 = lazy(() => import('./pages/X1'))
 
 // Inner component so it can use useLoader (must be inside LoaderProvider)
 function AppInner() {
@@ -35,6 +36,7 @@ function AppInner() {
           <Route path="/features" element={<Features />} />
           <Route path="/story" element={<Story />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/x1" element={<X1 />} />
         </Routes>
       </Suspense>
       <Footer />

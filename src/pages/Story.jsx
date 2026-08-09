@@ -77,11 +77,7 @@ export default function Story() {
       <section className="story-founder-note reveal">
         <div className="story-founder-note__inner">
 
-          <h1 className="story-founder-note__heading">
-            <span>NOMAD BEGAN</span>
-            <span>WITH A PROBLEM</span>
-            <span>I LIVED WITH.</span>
-          </h1>
+
 
           <div className="story-founder-note__message">
             <p className="story-founder-note__statement">
@@ -90,35 +86,33 @@ export default function Story() {
               products are still built around one fixed purpose.
             </p>
 
-            <picture className="story-founder-note__signature">
-              <source srcSet={signatureWebp} type="image/webp" />
-              <img
-                src={signaturePng}
-                alt="Sathiya Prakash signature"
-                width="600"
-                height="165"
-                decoding="async"
-              />
-            </picture>
-
-            <p className="story-founder-note__name">SATHIYA PRAKASH</p>
-            <p className="story-founder-note__role">
-              Founder · Product Direction · Digital Experience
-            </p>
+            <div className="story-founder-note__sign-block">
+              <picture className="story-founder-note__signature">
+                <source srcSet={signatureWebp} type="image/webp" />
+                <img
+                  src={signaturePng}
+                  alt="Sathiya Prakash signature"
+                  width="600"
+                  height="160"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
+              <p className="story-founder-note__name">SATHIYA PRAKASH</p>
+              <p className="story-founder-note__role">
+                Founder · Product Direction · Digital Experience
+              </p>
+            </div>
           </div>
 
         </div>
       </section>
 
 {/* ─── The Friction ─── */}
-      <section className="section section-dark story-friction" style={{ padding: '140px 0', backgroundColor: '#0A0A0A' }}>
+      <section className="section section-dark story-friction" style={{ padding: '60px 0 140px 0', backgroundColor: '#0A0A0A' }}>
         <div className="container">
           <div style={{ maxWidth: '840px' }}>
             
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px', margin: '0 0 40px -4px' }}>
-              <div style={{ width: '24px', height: '1px', backgroundColor: '#E26D3F' }}></div>
-              <p className="eyebrow" style={{ color: '#E26D3F', margin: 0, letterSpacing: '0.12em', fontSize: '11px', textTransform: 'uppercase' }}>THE FRICTION</p>
-            </div>
             
             <h2 style={{ fontSize: 'clamp(44px, 6vw, 64px)', lineHeight: 1.05, letterSpacing: '-0.02em', margin: '0 0 100px 0', color: '#F3EFE5', fontWeight: 600 }}>
               Every bag I owned made<br/>me choose.

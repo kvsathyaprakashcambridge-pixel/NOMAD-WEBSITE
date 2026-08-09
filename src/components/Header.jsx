@@ -57,6 +57,7 @@ export default function Header() {
     { label: 'Features', to: '/features' },
     { label: 'Our Story', to: '/story' },
     { label: 'Contact', to: '/contact' },
+    { label: 'X1', to: '/x1' },
   ]
 
   return (
@@ -84,7 +85,7 @@ export default function Header() {
             className="nav-action"
             aria-label="Toggle Manifest"
             onClick={() => dispatch({ type: 'TOGGLE_PANEL' })}
-            style={{ position: 'relative', display: 'flex', alignItems: 'center', cursor: 'pointer', background: 'none', border: 'none', padding: 0 }}
+            style={{ position: 'relative' }}
           >
             <svg viewBox="0 0 24 24" aria-hidden="true" style={{ width: '20px', height: '20px' }}>
               <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>

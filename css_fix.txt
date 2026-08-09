@@ -1,0 +1,90 @@
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .story-founder-visual__origin,
+  .story-founder-visual__direction,
+  .story-founder-visual__statement,
+  .story-founder-visual__routines {
+    animation: none;
+  }
+}
+
+/* ── Part 2: Cream founder-note section ── */
+.story-founder-note {
+  background: var(--paper, #f4f1e9);
+  color: var(--ink, #111312);
+  padding: clamp(40px, 4vw, 64px) clamp(40px, 6vw, 88px);
+}
+
+.story-founder-note__inner {
+  width: min(100%, 1360px);
+  margin-inline: auto;
+}
+
+.story-founder-note__message {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 40px;
+}
+
+.story-founder-note__statement {
+  max-width: 460px;
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.65;
+  color: rgba(23, 22, 20, 0.68);
+  text-align: left;
+}
+
+.story-founder-note__sign-block {
+  text-align: right;
+}
+
+.story-founder-note__signature {
+  display: block;
+  margin-bottom: 16px;
+  line-height: 0;
+}
+
+.story-founder-note__signature img {
+  display: block;
+  width: clamp(220px, 26vw, 340px);
+  height: auto;
+}
+
+.story-founder-note__name {
+  margin: 0 0 6px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink, #111312);
+  font-family: 'Manrope', Arial, sans-serif;
+}
+
+.story-founder-note__role {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(23, 22, 20, 0.56);
+  font-family: 'Manrope', Arial, sans-serif;
+}
+
+/* ── Mobile: below 768px ── */
+@media (max-width: 767px) {
+  .story-founder-note {
+    padding: 64px 20px 72px;
+  }
+  .story-founder-note__message {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .story-founder-note__statement {
+    text-align: center;
+    font-size: 15px;
+  }
+  .story-founder-note__sign-block {
+    text-align: center;
+  }
+}
