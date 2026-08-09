@@ -111,7 +111,7 @@ function DesktopConfigurationSystem({ modes, activeMode, setActiveMode, isTablet
       return prev;
     });
   });
-  const vhAmount = isTablet ? "270vh" : "300vh";
+  const vhAmount = isTablet ? "180vh" : "200vh";
   const progressHeight = activeMode === 0 ? "0%" : activeMode === 1 ? "50%" : "100%";
 
   return (

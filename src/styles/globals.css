@@ -543,7 +543,7 @@ button:focus-visible {
   opacity: 0;
   transform: translate3d(0, 18px, 0);
   will-change: transform, opacity;
-  transition: opacity .6s, transform .6s;
+  transition: opacity .35s, transform .35s;
 }
 .reveal.visible { opacity: 1; transform: translate3d(0, 0, 0); }
 

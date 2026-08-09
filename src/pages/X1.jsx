@@ -72,6 +72,7 @@ export default function X1() {
             <img 
               src={gallery[activeImageIndex].src} 
               alt={gallery[activeImageIndex].alt || `${variant.name} main view`}
+              width="1200" height="1500"
               className="x1-main-image"
             />
             {gallery.length > 1 && (
@@ -105,7 +106,7 @@ export default function X1() {
                   aria-selected={idx === activeImageIndex}
                   aria-label={`View image ${idx + 1}`}
                 >
-                  <img src={img.src} alt="" className="x1-thumbnail-img" />
+                  <img src={img.src} alt="" className="x1-thumbnail-img" loading="lazy" width="120" height="150" />
                 </button>
               ))}
             </div>

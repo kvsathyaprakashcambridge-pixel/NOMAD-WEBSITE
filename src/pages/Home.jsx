@@ -159,7 +159,7 @@ export default function Home() {
     visible: { opacity: 1, transition: { duration: 0.15 } }
   } : {
     hidden: { opacity: 0, x: "-50%", y: "calc(-50% + 20px)", filter: 'blur(6px)' },
-    visible: { opacity: 1, x: "-50%", y: "-50%", filter: 'blur(0px)', transition: { delay: 0.1 * tScale, duration: 0.7 * tScale, ease: [0.22, 1, 0.36, 1] } }
+    visible: { opacity: 1, x: "-50%", y: "-50%", filter: 'blur(0px)', transition: { delay: 0.1 * tScale, duration: 0.35 * tScale, ease: [0.22, 1, 0.36, 1] } }
   };
 
   const labelVariants = shouldReduceMotion ? {
@@ -167,7 +167,7 @@ export default function Home() {
     visible: { opacity: 1, transition: { duration: 0.15 } }
   } : {
     hidden: { opacity: 0, y: 12 },
-    visible: { opacity: 1, y: 0, transition: { delay: 0.18 * tScale, duration: 0.5 * tScale, ease: [0.22, 1, 0.36, 1] } }
+    visible: { opacity: 1, y: 0, transition: { delay: 0.18 * tScale, duration: 0.3 * tScale, ease: [0.22, 1, 0.36, 1] } }
   };
 
   const headingVariants = shouldReduceMotion ? {
@@ -175,7 +175,7 @@ export default function Home() {
     visible: { opacity: 1, transition: { duration: 0.15 } }
   } : {
     hidden: { opacity: 0, y: isMobile ? 18 : 28 },
-    visible: { opacity: 1, y: 0, transition: { delay: 0.26 * tScale, duration: 0.65 * tScale, ease: [0.22, 1, 0.36, 1] } }
+    visible: { opacity: 1, y: 0, transition: { delay: 0.26 * tScale, duration: 0.35 * tScale, ease: [0.22, 1, 0.36, 1] } }
   };
 
   const pVariants = shouldReduceMotion ? {
@@ -183,7 +183,7 @@ export default function Home() {
     visible: { opacity: 1, transition: { duration: 0.15 } }
   } : {
     hidden: { opacity: 0, y: 18 },
-    visible: { opacity: 1, y: 0, transition: { delay: 0.38 * tScale, duration: 0.55 * tScale, ease: [0.22, 1, 0.36, 1] } }
+    visible: { opacity: 1, y: 0, transition: { delay: 0.38 * tScale, duration: 0.3 * tScale, ease: [0.22, 1, 0.36, 1] } }
   };
 
   const btnVariants = shouldReduceMotion ? {
@@ -191,7 +191,7 @@ export default function Home() {
     visible: { opacity: 1, transition: { duration: 0.15 } }
   } : {
     hidden: { opacity: 0, y: 14, scale: 0.97 },
-    visible: { opacity: 1, y: 0, scale: 1, transition: { delay: 0.48 * tScale, duration: 0.5 * tScale, ease: [0.22, 1, 0.36, 1] } }
+    visible: { opacity: 1, y: 0, scale: 1, transition: { delay: 0.48 * tScale, duration: 0.3 * tScale, ease: [0.22, 1, 0.36, 1] } }
   };
 
   const btnHover = shouldReduceMotion ? {} : {
@@ -206,7 +206,7 @@ export default function Home() {
     visible: { opacity: 1, filter: 'blur(0px)', transition: { duration: 0.15 } }
   } : {
     hidden: { opacity: 0, x: `calc(-50% + 15px)`, y: isMobile ? 33 : 49, scale: 1.109, filter: 'blur(5px)' },
-    visible: { opacity: 1, x: `calc(-50% + 15px)`, y: 13, scale: 1.180, filter: 'blur(0px)', transition: { delay: 0.32 * tScale, duration: 0.9 * tScale, ease: [0.16, 1, 0.3, 1] } }
+    visible: { opacity: 1, x: `calc(-50% + 15px)`, y: 13, scale: 1.180, filter: 'blur(0px)', transition: { delay: 0.32 * tScale, duration: 0.45 * tScale, ease: [0.16, 1, 0.3, 1] } }
   };
 
   /* Reveal observer */

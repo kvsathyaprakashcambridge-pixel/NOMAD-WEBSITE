@@ -397,7 +397,7 @@ export default function Product() {
                 <div className="best-seller-visual">
                   <span className="best-seller-index">{p.index}</span>
                   <span className="best-seller-watermark" aria-hidden="true">NOMAD</span>
-                  <img src={p.img} alt={p.alt} loading="lazy" decoding="async" />
+                  <img src={p.img} alt={p.alt} width="800" height="1000" loading="lazy" decoding="async" />
                 </div>
                 <div className="best-seller-info">
                   <div>
@@ -481,7 +481,7 @@ export default function Product() {
                     <div className="best-seller-visual">
                       <span className="best-seller-index">{p.index}</span>
                       <span className="best-seller-watermark" aria-hidden="true">NOMAD</span>
-                      <img src={p.img} alt={p.alt} loading={i === 0 ? "eager" : "lazy"} decoding="async" />
+                      <img src={p.img} alt={p.alt} width="800" height="1000" loading={i === 0 ? "eager" : "lazy"} decoding="async" />
                     </div>
                     <div className="best-seller-info">
                       <div>

@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import founderPhoto from '../assets/founder replace.png'
+import founderPhoto from '../assets/founder replace.webp'
 import signatureWebp from '../assets/sathya-prakash-signature-600.webp'
 import signaturePng from '../assets/sathya-prakash-signature.png'
 
@@ -24,10 +24,9 @@ export default function Story() {
           src={founderPhoto}
           alt="Sathiya Prakash, Founder of NOMAD"
           className="story-founder-visual__photo"
-          width="2752"
-          height="1536"
-          loading="eager"
-          fetchPriority="high"
+          width="1200"
+          height="800"
+          loading="lazy"
           decoding="async"
         />
 
