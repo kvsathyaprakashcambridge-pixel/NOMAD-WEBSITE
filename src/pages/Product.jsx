@@ -195,15 +195,13 @@ const SYSTEM_GALLERY = [
 ]
 
 function formatProductName(name) {
-  if (name.startsWith('X1 ')) {
-    return (
-      <span className="x1-product-name">
-        <span className="x1-plain-prefix">X1</span>
-        <span className="x1-product-name-rest">{name.substring(2)}</span>
-      </span>
-    )
-  }
-  return <span className="x1-product-name"><span className="x1-product-name-rest">{name}</span></span>
+  return (
+    <span className="x1-product-name">
+      {name.split(/(X1)/g).map((part, i) => 
+        part === 'X1' ? <span key={i} style={{ fontFamily: 'Manrope, Arial, sans-serif' }}>X1</span> : <span key={i} className="x1-product-name-rest">{part}</span>
+      )}
+    </span>
+  )
 }
 
 export default function Product() {

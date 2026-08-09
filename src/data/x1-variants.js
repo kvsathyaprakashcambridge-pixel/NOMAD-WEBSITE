@@ -11,6 +11,16 @@ import galleryLaptop1200 from '../assets/nomad-x1-gallery-03-laptop-1200.webp'
 import galleryRear1200 from '../assets/nomad-x1-gallery-04-rear-support-1200.webp'
 import galleryExpansion1200 from '../assets/nomad-x1-gallery-05-expansion-1200.webp'
 
+import x1Front from '../assets/nomad-x1 front first.png'
+import x1Back from '../assets/nomad-x1 back second.png'
+import x1Model from '../assets/nomad-x1 model third.png'
+import x1Interior from '../assets/nomad-x1 interor fourth.png'
+
+import armorFront from '../assets/x1-armor front first.png'
+import armorBack from '../assets/x1-armor back second.png'
+import armorModel from '../assets/x1-armor model third.png'
+import armorInterior from '../assets/x1-armor interor fourth.png'
+
 export const X1_VARIANTS = [
   { 
     id: 'x1',
@@ -31,12 +41,10 @@ export const X1_VARIANTS = [
     ],
     whoItsFor: 'Perfect for the everyday commuter who needs a reliable, adaptable bag that effortlessly transitions from the office to the gym.',
     gallery: [
-      { src: obsidianImg, alt: 'NOMAD X1 Front View' },
-      { src: galleryExterior1200, alt: 'NOMAD X1 Exterior Silhouette' },
-      { src: galleryInterior1200, alt: 'NOMAD X1 Interior Organisation' },
-      { src: galleryLaptop1200, alt: 'NOMAD X1 Laptop Compartment' },
-      { src: galleryRear1200, alt: 'NOMAD X1 Rear Support' },
-      { src: galleryExpansion1200, alt: 'NOMAD X1 Expansion Profile' }
+      { src: x1Front, alt: 'NOMAD X1 Front View' },
+      { src: x1Back, alt: 'NOMAD X1 Back View' },
+      { src: x1Model, alt: 'NOMAD X1 Model View' },
+      { src: x1Interior, alt: 'NOMAD X1 Interior View' }
     ]
   },
   { 
@@ -58,7 +66,10 @@ export const X1_VARIANTS = [
     ],
     whoItsFor: 'Ideal for photographers, tech enthusiasts, and travelers who need maximum protection for delicate, high-value equipment.',
     gallery: [
-      { src: armorImg, alt: 'NOMAD X1 Armor' }
+      { src: armorFront, alt: 'NOMAD X1 Armor Front View' },
+      { src: armorBack, alt: 'NOMAD X1 Armor Back View' },
+      { src: armorModel, alt: 'NOMAD X1 Armor Model View' },
+      { src: armorInterior, alt: 'NOMAD X1 Armor Interior View' }
     ]
   },
   { 

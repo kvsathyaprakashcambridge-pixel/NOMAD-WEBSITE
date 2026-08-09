@@ -119,7 +119,11 @@ export default function X1() {
           </Link>
           
           <div className="x1-product-series">{variant.series}</div>
-          <h1 className="x1-product-title">{variant.name}</h1>
+          <h1 className="x1-product-title">
+            {variant.name.split(/(X1)/g).map((part, i) => 
+              part === 'X1' ? <span key={i} style={{ fontFamily: 'Manrope, Arial, sans-serif' }}>X1</span> : part
+            )}
+          </h1>
           <div className="x1-product-color">{variant.colour}</div>
           <div className="x1-product-price">
             <ProductPrice priceString={variant.price} />

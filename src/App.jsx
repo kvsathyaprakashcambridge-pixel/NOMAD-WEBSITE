@@ -1,5 +1,5 @@
 import { lazy, Suspense, useRef } from 'react'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import ScrollToTop from './components/ScrollToTop'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -36,6 +36,7 @@ function AppInner() {
           <Route path="/features" element={<Features />} />
           <Route path="/story" element={<Story />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/x1" element={<Navigate to="/x1/x1" replace />} />
           <Route path="/x1/:variantId" element={<X1 />} />
         </Routes>
       </Suspense>
