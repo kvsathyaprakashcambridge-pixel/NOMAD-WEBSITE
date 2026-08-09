@@ -2617,18 +2617,16 @@
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 2752 / 1536;
-  object-fit: contain;
 }
 
 .story-founder-visual__label {
   position: absolute;
   z-index: 2;
-  top: clamp(24px, 4vw, 54px);
-  left: clamp(24px, 6vw, 88px);
+  top: clamp(191px, calc(4vw + 167px), 221px);
+  left: clamp(197px, calc(6vw + 173px), 261px);
   margin: 0;
   color: var(--orange, #c55d2d);
-  font-size: 10px;
+  font-size: 16.8px;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -2648,11 +2646,13 @@
 /* ── Upper-left: origin block ── */
 .story-founder-visual__origin {
   position: absolute;
-  top: clamp(38px, 7vw, 100px);
-  left: clamp(28px, 6vw, 88px);
+  top: clamp(52px, calc(4vw + 28px), 82px);
+  right: clamp(32px, 6vw, 90px);
   display: grid;
-  gap: 10px;
+  gap: 12px;
   max-width: 210px;
+  justify-items: end;
+  text-align: right;
   /* staggered entrance */
   animation: sfv-fade-up 0.35s var(--ease, cubic-bezier(.2,.7,.2,1)) 0.1s both;
 }
@@ -2666,7 +2666,7 @@
 
 .story-founder-visual__origin-label {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -2676,7 +2676,7 @@
 
 .story-founder-visual__origin-title {
   display: block;
-  font-size: clamp(18px, 2vw, 24px);
+  font-size: clamp(21.6px, 2.4vw, 28.8px);
   font-weight: 700;
   line-height: 1;
   color: #f4f1ea;
@@ -2692,7 +2692,7 @@
   display: grid;
   gap: 7px;
   color: rgba(244, 241, 234, 0.85);
-  font-size: 10px;
+  font-size: 14px;
   line-height: 1;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -2713,9 +2713,9 @@
 /* ── Right-centre: editorial statement ── */
 .story-founder-visual__statement {
   position: absolute;
-  right: clamp(32px, 6vw, 90px);
-  top: 34%;
-  width: min(20vw, 270px);
+  left: clamp(18px, calc(6vw - 6px), 82px);
+  top: clamp(185px, calc(15vw + 45px), 265px);
+  width: min(80vw, 980px);
   text-align: left;
   animation: sfv-fade-up 0.35s var(--ease, cubic-bezier(.2,.7,.2,1)) 0.15s both;
 }
@@ -2723,7 +2723,7 @@
 .story-founder-visual__statement strong {
   display: block;
   color: #f4f1ea;
-  font-size: clamp(22px, 2.4vw, 38px);
+  font-size: clamp(53.9px, 5.88vw, 93.1px);
   line-height: 0.95;
   letter-spacing: -0.04em;
   font-family: 'Syne', Arial, sans-serif;
@@ -2737,7 +2737,7 @@
   right: clamp(32px, 6vw, 90px);
   bottom: clamp(34px, 6vw, 84px);
   color: rgba(244, 241, 234, 0.85);
-  font-size: 10px;
+  font-size: 14px;
   line-height: 1;
   letter-spacing: 0.11em;
   text-transform: uppercase;
@@ -2781,7 +2781,7 @@
 
   .story-founder-visual__origin {
     top: clamp(18px, 4vw, 36px);
-    left: clamp(16px, 5vw, 32px);
+    right: clamp(16px, 5vw, 32px);
   }
 }
 
