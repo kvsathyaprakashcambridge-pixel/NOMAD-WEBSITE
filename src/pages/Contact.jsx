@@ -127,8 +127,9 @@ export default function Contact() {
                   <label htmlFor="colour">Preferred Colour</label>
                   <select id="colour" name="colour" value={form.colour} onChange={handleChange}>
                     <option>Obsidian Black</option>
-                    <option>Slate Grey</option>
-                    <option>Forest Green</option>
+                    <option>Sandstone</option>
+                    <option>Midnight</option>
+                    <option>Moss</option>
                     <option>Not decided</option>
                   </select>
                   <span className="field-error" />
@@ -171,7 +172,7 @@ export default function Contact() {
             <h2 style={{ fontSize: '2.4rem' }}>Contact details</h2>
             <dl>
               <dt>Email</dt>
-              <dd>hello@nomad-x1.example</dd>
+              <dd>contact@nomadcarry.com</dd>
               <dt>Phone</dt>
               <dd>+91 90000 00000</dd>
               <dt>Location</dt>

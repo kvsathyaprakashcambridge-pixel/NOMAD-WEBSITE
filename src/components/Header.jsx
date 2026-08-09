@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useCart } from '../context/CartContext'
 import TransitionLink from './ui/TransitionLink'
@@ -8,8 +8,10 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
+  const [searchError, setSearchError] = useState('')
   const searchRef = useRef(null)
   const location = useLocation()
+  const navigate = useNavigate()
   const isHome = location.pathname === '/'
   
   const { state, dispatch, totalItems } = useCart()
@@ -54,10 +56,10 @@ export default function Header() {
   const navLinks = [
     { label: 'Home', to: '/' },
     { label: 'Product', to: '/product' },
+    { label: 'X1', to: '/x1' },
     { label: 'Features', to: '/features' },
     { label: 'Our Story', to: '/story' },
     { label: 'Contact', to: '/contact' },
-    { label: 'X1', to: '/x1' },
   ]
 
   return (
@@ -125,7 +127,7 @@ export default function Header() {
             </svg>
           </button>
 
-          <Link className="nav-action" to="/contact" aria-label="Contact NOMAD">
+          <Link className="nav-action" to="/story" aria-label="Meet the founder">
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <circle cx="12" cy="8" r="3.5"/>
               <path d="M5.5 21a6.5 6.5 0 0 1 13 0"/>
@@ -140,7 +142,29 @@ export default function Header() {
               onSubmit={(e) => {
                 e.preventDefault()
                 const q = e.target.querySelector('input').value.trim().toLowerCase()
-                setSearchOpen(false)
+                if (!q) return
+                
+                const SEARCH_CATALOG = [
+                  { names: ['nomad x1', 'x1', 'original'], path: '/x1/x1' },
+                  { names: ['x1 armor', 'armor'], path: '/x1/armor' },
+                  { names: ['x1 facet', 'facet'], path: '/x1/facet' },
+                  { names: ['x1 layer', 'layer'], path: '/x1/layer' },
+                  { names: ['x1 module', 'module'], path: '/x1/module' },
+                  { names: ['x1 roll', 'roll'], path: '/x1/roll' },
+                  { names: ['nomad arc', 'arc', 'city'], path: '/product' },
+                  { names: ['nomad vector', 'vector', 'tech'], path: '/product' },
+                  { names: ['nomad ridge', 'ridge', 'trail'], path: '/product' }
+                ]
+                
+                const match = SEARCH_CATALOG.find(item => item.names.some(n => n.includes(q) || q.includes(n)))
+                
+                if (match) {
+                  setSearchError('')
+                  setSearchOpen(false)
+                  navigate(match.path)
+                } else {
+                  setSearchError('No products found matching your search.')
+                }
               }}
               style={{
                 position: 'absolute',
@@ -148,6 +172,7 @@ export default function Header() {
                 right: 0,
                 top: 55,
                 display: 'flex',
+                flexDirection: 'column',
                 width: 'min(330px, calc(100vw - 32px))',
                 padding: 8,
                 background: '#fff',
@@ -155,25 +180,33 @@ export default function Header() {
                 boxShadow: '0 16px 40px rgba(17,19,18,.13)',
               }}
             >
-              <input
-                type="search"
-                aria-label="Search NOMAD"
-                placeholder="Search product, features, story…"
-                style={{
-                  minWidth: 0, flex: 1, padding: '9px 11px',
-                  border: 0, background: '#f4f2ed', color: '#111312', outline: 0,
-                }}
-                autoFocus
-              />
-              <button
-                type="submit"
-                style={{
-                  padding: '0 14px', border: 0,
-                  background: '#111312', color: '#fff', fontWeight: 700, cursor: 'pointer',
-                }}
-              >
-                Go
-              </button>
+              <div style={{ display: 'flex', width: '100%' }}>
+                <input
+                  type="search"
+                  aria-label="Search NOMAD"
+                  placeholder="Search product, features, story…"
+                  style={{
+                    minWidth: 0, flex: 1, padding: '9px 11px',
+                    border: 0, background: '#f4f2ed', color: '#111312', outline: 0,
+                  }}
+                  autoFocus
+                  onChange={() => setSearchError('')}
+                />
+                <button
+                  type="submit"
+                  style={{
+                    padding: '0 14px', border: 0,
+                    background: '#111312', color: '#fff', fontWeight: 700, cursor: 'pointer',
+                  }}
+                >
+                  Go
+                </button>
+              </div>
+              {searchError && (
+                <div style={{ padding: '8px 4px 0', color: '#E26D3F', fontSize: '0.85rem' }}>
+                  {searchError}
+                </div>
+              )}
             </form>
           )}
         </div>

@@ -463,7 +463,7 @@ export default function Home() {
       </section>
 
       {/* ─── PRINCIPLES ─── */}
-      <section className="section">
+      <section className="section" style={{ paddingTop: 0 }}>
         <div className="container">
           <div className="intro-head">
             <h2>Nothing added without a purpose.</h2>

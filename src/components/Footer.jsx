@@ -26,7 +26,7 @@ export default function Footer() {
           </div>
           <div>
             <h3>Contact</h3>
-            <a href="mailto:hello@nomad-x1.example">hello@nomad-x1.example</a>
+            <a href="mailto:contact@nomadcarry.com">contact@nomadcarry.com</a>
             <a href="#">Instagram</a>
             <a href="#">LinkedIn</a>
           </div>

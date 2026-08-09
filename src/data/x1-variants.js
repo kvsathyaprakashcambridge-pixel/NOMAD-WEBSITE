@@ -14,32 +14,32 @@ import galleryExpansion1200 from '../assets/nomad-x1-gallery-05-expansion-1200.w
 import x1Front from '../assets/nomad-x1 front first.png'
 import x1Back from '../assets/nomad-x1 back second.png'
 import x1Model from '../assets/nomad-x1 model third.png'
-import x1Interior from '../assets/nomad-x1 interor fourth.png'
+import x1Interior from '../assets/nomad-x1 interior fourth.png'
 
 import armorFront from '../assets/x1-armor front first.png'
 import armorBack from '../assets/x1-armor back second.png'
 import armorModel from '../assets/x1-armor model third.png'
-import armorInterior from '../assets/x1-armor interor fourth.png'
+import armorInterior from '../assets/x1-armor interior fourth.png'
 
 import facetFront from '../assets/x1-facet front first.png'
 import facetBack from '../assets/x1-facet back second.png'
 import facetModel from '../assets/x1-facet model third.png'
-import facetInterior from '../assets/x1-facet interor fourth.png'
+import facetInterior from '../assets/x1-facet interior fourth.png'
 
 import layerFront from '../assets/x1-layer front first.png'
 import layerBack from '../assets/x1-layer back second.png'
 import layerModel from '../assets/x1-layer model third.png'
-import layerInterior from '../assets/x1-layer interor fourth.png'
+import layerInterior from '../assets/x1-layer interior fourth.png'
 
 import moduleFront from '../assets/x1-module front first.png'
 import moduleBack from '../assets/x1-module back second.png'
 import moduleModel from '../assets/x1-module model third.png'
-import moduleInterior from '../assets/x1-module interor fourth.png'
+import moduleInterior from '../assets/x1-module interior fourth.png'
 
 import rollFront from '../assets/x1-roll front first.png'
 import rollBack from '../assets/x1-roll back second.png'
 import rollModel from '../assets/x1-roll model third.png'
-import rollInterior from '../assets/x1-roll interor fourth.png'
+import rollInterior from '../assets/x1-roll interior fourth.png'
 
 export const X1_VARIANTS = [
   { 
