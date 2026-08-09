@@ -239,20 +239,9 @@ export default function Home() {
             <div className="editorial-intro">
               <motion.p className="eyebrow" initial="hidden" animate="visible" variants={labelVariants}>NOMAD <span className="x1-normal">X1</span> / 01</motion.p>
               <motion.h1 initial="hidden" animate="visible" variants={headingVariants}>Built for wherever<br />life takes you.</motion.h1>
-              <MotionLink 
-                className="editorial-shop" 
-                to="/product" 
-                aria-label="Explore NOMAD X1"
-                initial="hidden" animate="visible" variants={btnVariants}
-                whileHover={btnHover}
-                whileTap={btnTap}
-                style={{ transition: 'background 0.25s, color 0.25s' }}
-              >
-                <span className="x1-normal">X1</span>
-              </MotionLink>
             </div>
             <motion.p className="editorial-description" initial="hidden" animate="visible" variants={pVariants}>
-              A modular smart backpack that organises technology, daily essentials and short journeys without compromising comfort or style.
+              A modular smart backpack built for work, travel, technology, and everyday movement.
             </motion.p>
           </div>
           <motion.div className="hero-word" aria-hidden="true" initial="hidden" animate="visible" variants={wordVariants}>NOMAD</motion.div>
@@ -328,7 +317,6 @@ export default function Home() {
                         >
                           {pin.svg}
                           <h3>{pin.title}</h3>
-                          <p>{pin.desc}</p>
                         </button>
                       </article>
                     );
