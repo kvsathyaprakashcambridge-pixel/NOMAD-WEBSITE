@@ -1136,7 +1136,7 @@
   width: 100%;
   max-width: 600px;
   padding-left: clamp(48px, 5vw, 80px);
-  margin-top: -60px;
+  margin-top: -100px;
 }
 @media (min-width: 1024px) and (max-width: 1199px) {
   .config-left-content {
@@ -1174,7 +1174,7 @@
 }
 .config-modes-list {
   position: relative;
-  margin-top: 40px;
+  margin-top: 80px;
 }
 .config-progress-track {
   width: 1px;

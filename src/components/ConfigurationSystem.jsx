@@ -132,7 +132,7 @@ function DesktopConfigurationSystem({ modes, activeMode, setActiveMode, isTablet
 
           <div className="config-left-col">
             <div className="config-left-content">
-              <p className="eyebrow">NOMAD <span className="x1-normal">X1</span> / CONFIGURATION SYSTEM</p>
+
               <h2>ONE SYSTEM. THREE MODES.</h2>
               <p className="lede light-copy">NOMAD X1 adapts its organisation and capacity around what the day requires.</p>
               
@@ -265,7 +265,7 @@ function MobileConfigurationSystem({ modes, activeMode, setActiveMode, shouldRed
   return (
     <section className="config-system-mobile section">
       <div className="container">
-         <p className="eyebrow">NOMAD <span className="x1-normal">X1</span> / CONFIGURATION SYSTEM</p>
+
          <h2>ONE SYSTEM. THREE MODES.</h2>
          <p className="lede light-copy">NOMAD X1 adapts its organisation and capacity around what the day requires.</p>
          
