@@ -21,6 +21,26 @@ import armorBack from '../assets/x1-armor back second.png'
 import armorModel from '../assets/x1-armor model third.png'
 import armorInterior from '../assets/x1-armor interor fourth.png'
 
+import facetFront from '../assets/x1-facet front first.png'
+import facetBack from '../assets/x1-facet back second.png'
+import facetModel from '../assets/x1-facet model third.png'
+import facetInterior from '../assets/x1-facet interor fourth.png'
+
+import layerFront from '../assets/x1-layer front first.png'
+import layerBack from '../assets/x1-layer back second.png'
+import layerModel from '../assets/x1-layer model third.png'
+import layerInterior from '../assets/x1-layer interor fourth.png'
+
+import moduleFront from '../assets/x1-module front first.png'
+import moduleBack from '../assets/x1-module back second.png'
+import moduleModel from '../assets/x1-module model third.png'
+import moduleInterior from '../assets/x1-module interor fourth.png'
+
+import rollFront from '../assets/x1-roll front first.png'
+import rollBack from '../assets/x1-roll back second.png'
+import rollModel from '../assets/x1-roll model third.png'
+import rollInterior from '../assets/x1-roll interor fourth.png'
+
 export const X1_VARIANTS = [
   { 
     id: 'x1',
@@ -91,7 +111,10 @@ export const X1_VARIANTS = [
     ],
     whoItsFor: 'Designed for the style-conscious professional navigating the city with essential technology and minimal bulk.',
     gallery: [
-      { src: facetImg, alt: 'NOMAD X1 Facet' }
+      { src: facetFront, alt: 'NOMAD X1 Facet Front View' },
+      { src: facetBack, alt: 'NOMAD X1 Facet Back View' },
+      { src: facetModel, alt: 'NOMAD X1 Facet Model View' },
+      { src: facetInterior, alt: 'NOMAD X1 Facet Interior View' }
     ]
   },
   { 
@@ -113,7 +136,10 @@ export const X1_VARIANTS = [
     ],
     whoItsFor: 'Built for the highly organized individual who carries a wide variety of distinct tools, chargers, and accessories daily.',
     gallery: [
-      { src: layerImg, alt: 'NOMAD X1 Layer' }
+      { src: layerFront, alt: 'NOMAD X1 Layer Front View' },
+      { src: layerBack, alt: 'NOMAD X1 Layer Back View' },
+      { src: layerModel, alt: 'NOMAD X1 Layer Model View' },
+      { src: layerInterior, alt: 'NOMAD X1 Layer Interior View' }
     ]
   },
   { 
@@ -135,7 +161,10 @@ export const X1_VARIANTS = [
     ],
     whoItsFor: 'Perfect for unpredictable routines, heavy packers, and field workers who need a bag that scales up or down instantly.',
     gallery: [
-      { src: moduleImg, alt: 'NOMAD X1 Module' }
+      { src: moduleFront, alt: 'NOMAD X1 Module Front View' },
+      { src: moduleBack, alt: 'NOMAD X1 Module Back View' },
+      { src: moduleModel, alt: 'NOMAD X1 Module Model View' },
+      { src: moduleInterior, alt: 'NOMAD X1 Module Interior View' }
     ]
   },
   { 
@@ -157,7 +186,10 @@ export const X1_VARIANTS = [
     ],
     whoItsFor: 'Ideal for cyclists, commuters, and travelers who encounter varying weather and frequently changing capacity needs.',
     gallery: [
-      { src: rollImg, alt: 'NOMAD X1 Roll' }
+      { src: rollFront, alt: 'NOMAD X1 Roll Front View' },
+      { src: rollBack, alt: 'NOMAD X1 Roll Back View' },
+      { src: rollModel, alt: 'NOMAD X1 Roll Model View' },
+      { src: rollInterior, alt: 'NOMAD X1 Roll Interior View' }
     ]
   }
 ];
