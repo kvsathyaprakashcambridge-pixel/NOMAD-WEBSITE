@@ -520,8 +520,8 @@
   text-transform: uppercase;
 }
 #product-focus-image {
-  width: 90%;
-  max-width: 460px;
+  width: 100%;
+  max-width: 580px;
   height: auto;
   object-fit: contain;
   display: block;
@@ -1174,7 +1174,7 @@
 }
 .config-modes-list {
   position: relative;
-  margin-top: 80px;
+  margin-top: 100px;
 }
 .config-progress-track {
   width: 1px;
@@ -1217,7 +1217,7 @@
     gap: 16px;
   }
   .config-modes-list {
-    margin-top: 20px;
+    margin-top: 80px;
   }
 }
 

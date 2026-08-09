@@ -7,7 +7,7 @@ import { useCart } from '../context/CartContext'
 import arcImg from '../assets/replace arc.webp'
 import vectorImg from '../assets/replace vector.webp'
 import ridgeImg from '../assets/replace ridge.webp'
-import obsidianImg from '../assets/nomad-x1-obsidian-uploaded.webp'
+import { X1_VARIANTS } from '../data/x1-variants'
 
 function flyToManifest(sourceEl, targetEl, onComplete) {
   const start = sourceEl.getBoundingClientRect();
@@ -36,14 +36,7 @@ function flyToManifest(sourceEl, targetEl, onComplete) {
     if (onComplete) onComplete();
   }, 900);
 }
-import armorImg from '../assets/x1-armor.webp'
-import facetImg from '../assets/x1-facet.webp'
-import layerImg from '../assets/x1-layer.webp'
-import moduleImg from '../assets/x1-module.webp'
-import rollImg from '../assets/x1-roll.webp'
-import frontViewImg from '../assets/nomad-x1-front-view.webp'
-import backViewImg from '../assets/nomad-x1-back-view.webp'
-import interiorViewImg from '../assets/nomad-x1-interior-view.webp'
+
 
 // Gallery — original PNGs preserved in assets/ (not bundled; WebP variants used)
 
@@ -70,14 +63,7 @@ const BEST_SELLERS = [
   { index: '03 / TRAIL', series: 'Trail-ready utility',       name: 'NOMAD RIDGE',  colour: 'Moss',      price: 6299, img: ridgeImg,  alt: 'NOMAD RIDGE moss green expedition backpack',         cls: 'best-seller-card-ridge' },
 ]
 
-const X1_LINEUP = [
-  { index: '01 / ORIGINAL', series: 'Original modular carry',       name: 'NOMAD X1',   colour: 'Obsidian Black', price: 8999,  img: obsidianImg, alt: 'NOMAD X1 Original backpack in Obsidian Black',        cls: 'best-seller-card-arc' },
-  { index: '02 / ARMOR',    series: 'Impact-shield carry',          name: 'X1 ARMOR',   colour: 'Obsidian Black', price: 11499, img: armorImg,    alt: 'NOMAD X1 Armor hard-shell backpack in Obsidian Black', cls: 'best-seller-card-arc' },
-  { index: '03 / FACET',    series: 'Sculpted tech shell',          name: 'X1 FACET',   colour: 'Obsidian Black', price: 10299, img: facetImg,    alt: 'NOMAD X1 Facet sculpted tech backpack in Obsidian Black', cls: 'best-seller-card-arc' },
-  { index: '04 / LAYER',    series: 'Multi-compartment carry',      name: 'X1 LAYER',   colour: 'Obsidian Black', price: 9499,  img: layerImg,    alt: 'NOMAD X1 Layer multi-compartment backpack in Obsidian Black', cls: 'best-seller-card-arc' },
-  { index: '05 / MODULE',   series: 'Expandable utility system',    name: 'X1 MODULE',  colour: 'Obsidian Black', price: 12999, img: moduleImg,   alt: 'NOMAD X1 Module utility backpack in Obsidian Black',   cls: 'best-seller-card-arc' },
-  { index: '06 / ROLL',     series: 'Flexible roll-top carry',      name: 'X1 ROLL',    colour: 'Obsidian Black', price: 9999,  img: rollImg,     alt: 'NOMAD X1 Roll flexible roll-top backpack in Obsidian Black', cls: 'best-seller-card-arc' },
-]
+
 
 const ROUTINES = [
   {
@@ -369,7 +355,7 @@ export default function Product() {
   const shouldUseStickyMotion = isDesktop && !shouldReduceMotion
   const desktopMotionStyle = shouldUseStickyMotion ? { x: translateX } : undefined
   const sectionHeight = shouldUseStickyMotion && scrollRange > 0 ? `${stickyHeight + scrollRange}px` : (shouldUseStickyMotion ? '100vh' : 'auto')
-  const activeVariant = X1_LINEUP[activeIndex] || X1_LINEUP[0]
+  const activeVariant = X1_VARIANTS[activeIndex] || X1_VARIANTS[0]
 
   useEffect(() => {
     const io = new IntersectionObserver(
@@ -486,8 +472,14 @@ export default function Product() {
                 className="x1-horizontal-track"
                 style={desktopMotionStyle}
               >
-                {X1_LINEUP.map((p, i) => (
-                  <article key={p.name} className={`best-seller-card x1-lineup-card ${p.cls} ${i === activeIndex ? 'is-active' : ''} reveal`} role="listitem">
+                {X1_VARIANTS.map((p, i) => (
+                  <article 
+                    key={p.name} 
+                    className={`best-seller-card x1-lineup-card ${p.cls} ${i === activeIndex ? 'is-active' : ''} reveal`} 
+                    role="listitem"
+                    onClick={() => navigate(`/x1/${p.id}`)}
+                    style={{ cursor: 'pointer' }}
+                  >
                     <div className="best-seller-visual">
                       <span className="best-seller-index">{p.index}</span>
                       <span className="best-seller-watermark" aria-hidden="true">NOMAD</span>

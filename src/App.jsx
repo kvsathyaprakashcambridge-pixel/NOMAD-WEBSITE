@@ -36,7 +36,7 @@ function AppInner() {
           <Route path="/features" element={<Features />} />
           <Route path="/story" element={<Story />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/x1" element={<X1 />} />
+          <Route path="/x1/:variantId" element={<X1 />} />
         </Routes>
       </Suspense>
       <Footer />
