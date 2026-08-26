@@ -1,5 +1,5 @@
-import { lazy, Suspense, useRef } from 'react'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import ScrollToTop from './components/ScrollToTop'
 import Header from './components/Header'
 import Footer from './components/Footer'
@@ -20,37 +20,49 @@ const Features = lazy(() => import('./pages/Features'))
 const Story = lazy(() => import('./pages/Story'))
 const Contact = lazy(() => import('./pages/Contact'))
 const X1 = lazy(() => import('./pages/X1'))
+const Login = lazy(() => import('./pages/Login'))
 
 // Inner component so it can use useLoader (must be inside LoaderProvider)
 function AppInner() {
-  const { loaderRef, opts, active } = useLoader()
+  const { loaderRef, opts } = useLoader()
+  const location = useLocation()
+  const isLoginPage = location.pathname === '/login'
+
   return (
     <>
       <ScrollToTop />
-      <Header />
-      <Suspense fallback={<div style={{ minHeight: '100vh', background: '#0a0b09' }} />}>
-        <RouteReadiness />
+
+      {/* Site chrome — hidden on the login route */}
+      {!isLoginPage && <Header />}
+
+      <Suspense fallback={<div style={{ minHeight: '100vh', background: isLoginPage ? '#0d0f10' : 'var(--paper, #f4f1e9)' }} />}>
+        {/* RouteReadiness hides the WordLoader transition overlay when the new page mounts */}
+        {!isLoginPage && <RouteReadiness />}
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/product" element={<Product />} />
-          <Route path="/features" element={<Features />} />
-          <Route path="/story" element={<Story />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/x1" element={<Navigate to="/x1/x1" replace />} />
+          <Route path="/"              element={<Home />} />
+          <Route path="/product"       element={<Product />} />
+          <Route path="/features"      element={<Features />} />
+          <Route path="/story"         element={<Story />} />
+          <Route path="/contact"       element={<Contact />} />
+          <Route path="/x1"            element={<Navigate to="/x1/x1" replace />} />
           <Route path="/x1/:variantId" element={<X1 />} />
+          <Route path="/login"         element={<Login />} />
         </Routes>
       </Suspense>
-      <Footer />
-      <MobileMenu />
-      <ManifestPanel />
-      <BackTop />
 
-      {/* Global overlay — mounted once, GSAP controls visibility */}
-      <WordLoader
-        ref={loaderRef}
-        words={opts.words}
-        variant={opts.variant}
-      />
+      {!isLoginPage && <Footer />}
+      {!isLoginPage && <MobileMenu />}
+      {!isLoginPage && <ManifestPanel />}
+      {!isLoginPage && <BackTop />}
+
+      {/* Global transition overlay — only shown between non-login routes */}
+      {!isLoginPage && (
+        <WordLoader
+          ref={loaderRef}
+          words={opts.words}
+          variant={opts.variant}
+        />
+      )}
     </>
   )
 }
